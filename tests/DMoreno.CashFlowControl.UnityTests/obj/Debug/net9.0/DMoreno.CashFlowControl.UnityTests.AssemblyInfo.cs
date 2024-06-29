@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DMoreno.CashFlowControl.UnityTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d5bd47c06c2bf1530eab29341fef0d9e586e9926")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ca2ef32faeaafc6b3e09befd3ce4619026443265")]
 [assembly: System.Reflection.AssemblyProductAttribute("DMoreno.CashFlowControl.UnityTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DMoreno.CashFlowControl.UnityTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

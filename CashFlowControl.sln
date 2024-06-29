@@ -17,17 +17,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1-Data", "4.1-Data", "{16
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2-CrossCutting", "4.2-CrossCutting", "{598AE0A2-0F9D-4EAF-9CDF-84A802A9FBAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMoreno.CashFlowControl.Domain", "src\DMoreno.CashFlowControl.Domain\DMoreno.CashFlowControl.Domain.csproj", "{C7325865-2E18-43B1-8E52-7D7944136F91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DMoreno.CashFlowControl.Domain", "src\DMoreno.CashFlowControl.Domain\DMoreno.CashFlowControl.Domain.csproj", "{C7325865-2E18-43B1-8E52-7D7944136F91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMoreno.CashFlowControl.Infra.Data", "src\DMoreno.CashFlowControl.Infra.Data\DMoreno.CashFlowControl.Infra.Data.csproj", "{2AC07D97-EF96-4379-9AFE-CCD626B89866}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DMoreno.CashFlowControl.Infra.Data", "src\DMoreno.CashFlowControl.Infra.Data\DMoreno.CashFlowControl.Infra.Data.csproj", "{2AC07D97-EF96-4379-9AFE-CCD626B89866}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMoreno.CashFlowControl.Infra.CrossCutting.IoC", "src\DMoreno.CashFlowControl.Infra.CrossCutting.IoC\DMoreno.CashFlowControl.Infra.CrossCutting.IoC.csproj", "{2966722E-1E2A-4490-988F-397DDB550284}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DMoreno.CashFlowControl.Infra.CrossCutting.IoC", "src\DMoreno.CashFlowControl.Infra.CrossCutting.IoC\DMoreno.CashFlowControl.Infra.CrossCutting.IoC.csproj", "{2966722E-1E2A-4490-988F-397DDB550284}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMoreno.CashFlowControl.Application", "src\DMoreno.CashFlowControl.Application\DMoreno.CashFlowControl.Application.csproj", "{2A7AEC74-EC00-432F-884F-78D6BCC01146}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DMoreno.CashFlowControl.Application", "src\DMoreno.CashFlowControl.Application\DMoreno.CashFlowControl.Application.csproj", "{2A7AEC74-EC00-432F-884F-78D6BCC01146}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMoreno.CashFlowControl.bff", "src\DMoreno.CashFlowControl.bff\DMoreno.CashFlowControl.bff.csproj", "{F315F85D-D6A0-4BE8-84A0-4F7C92867701}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DMoreno.CashFlowControl.bff", "src\DMoreno.CashFlowControl.bff\DMoreno.CashFlowControl.bff.csproj", "{F315F85D-D6A0-4BE8-84A0-4F7C92867701}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMoreno.CashFlowControl.UnityTests", "tests\DMoreno.CashFlowControl.UnityTests\DMoreno.CashFlowControl.UnityTests.csproj", "{97F59493-7F18-4232-8538-94C20BB99D8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DMoreno.CashFlowControl.UnityTests", "tests\DMoreno.CashFlowControl.UnityTests\DMoreno.CashFlowControl.UnityTests.csproj", "{97F59493-7F18-4232-8538-94C20BB99D8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMoreno.CashFlowControl.Infra.CrossCutting.Shared", "src\DMoreno.CashFlowControl.Infra.CrossCutting.Shared\DMoreno.CashFlowControl.Infra.CrossCutting.Shared.csproj", "{38BAACD1-64FA-420E-A1DC-90149336F0CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{97F59493-7F18-4232-8538-94C20BB99D8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97F59493-7F18-4232-8538-94C20BB99D8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97F59493-7F18-4232-8538-94C20BB99D8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38BAACD1-64FA-420E-A1DC-90149336F0CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38BAACD1-64FA-420E-A1DC-90149336F0CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38BAACD1-64FA-420E-A1DC-90149336F0CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38BAACD1-64FA-420E-A1DC-90149336F0CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -72,6 +78,7 @@ Global
 		{2A7AEC74-EC00-432F-884F-78D6BCC01146} = {0C5BF437-20DF-4E08-A602-8D5CCEE809D1}
 		{F315F85D-D6A0-4BE8-84A0-4F7C92867701} = {F5BC4BAF-F017-447B-95F7-ECAA0C4DBD1A}
 		{97F59493-7F18-4232-8538-94C20BB99D8F} = {592627FF-F67C-4858-8696-E0E6B0DB26CF}
+		{38BAACD1-64FA-420E-A1DC-90149336F0CE} = {598AE0A2-0F9D-4EAF-9CDF-84A802A9FBAA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6A5BC7C1-122F-407D-8569-91DBB36175A8}

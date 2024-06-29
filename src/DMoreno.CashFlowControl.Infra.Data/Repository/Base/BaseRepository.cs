@@ -53,7 +53,7 @@ public class BaseRepository<TEntity> : IDisposable, IBaseRepository<TEntity> whe
 
     public async Task DeleteAsync(Guid id)
     {
-        var entity = await GetByIdAsync(id).ConfigureAwait(false);
+        var entity = await GetByIdAsync(id);
 
         if (entity != null)
             _dbSet.Remove(entity);
@@ -61,7 +61,7 @@ public class BaseRepository<TEntity> : IDisposable, IBaseRepository<TEntity> whe
 
     public async Task DeleteRangeAsync(Expression<Func<TEntity, bool>>? filter = null)
     {
-        var (items, _) = await GetAsync(filter).ConfigureAwait(false);
+        var (items, _) = await GetAsync(filter);
         _dbSet.RemoveRange(items);
     }
 
@@ -74,14 +74,14 @@ public class BaseRepository<TEntity> : IDisposable, IBaseRepository<TEntity> whe
     public async Task TruncateAsync()
     {
         var name = _db.Model.FindEntityType(typeof(TEntity));
-        await _db.Database.ExecuteSqlRawAsync($"truncate table {name.Name}").ConfigureAwait(false);
+        await _db.Database.ExecuteSqlRawAsync($"truncate table {name.Name}");
     }
 
     public virtual async Task<TEntity?> GetByIdAsync(Guid id) =>
         await _dbSet.FindAsync(id);
 
     public virtual async Task<IEnumerable<TEntity>> GetAllAsync() =>
-        await _dbSet.ToListAsync().ConfigureAwait(false);
+        await _dbSet.ToListAsync();
 
     public virtual async Task<(IEnumerable<TEntity> items, int count)> GetAsync(
         Expression<Func<TEntity, bool>>? filter = null,
@@ -109,13 +109,13 @@ public class BaseRepository<TEntity> : IDisposable, IBaseRepository<TEntity> whe
     public virtual async Task<IEnumerable<TEntity>> GetByAsync(Expression<Func<TEntity, bool>> predicate)
     {
         var result = _dbSet.AsNoTracking().Where(predicate);
-        return await result.ToListAsync().ConfigureAwait(false);
+        return await result.ToListAsync();
     }
 
     public virtual async Task<IEnumerable<TEntity>> GetForUpdateAsync(Expression<Func<TEntity, bool>> predicate)
     {
         var result = _dbSet.Where(predicate);
-        return await result.ToListAsync().ConfigureAwait(false);
+        return await result.ToListAsync();
     }
 
     public void Dispose()
@@ -125,8 +125,8 @@ public class BaseRepository<TEntity> : IDisposable, IBaseRepository<TEntity> whe
     }
 
     public async Task<TEntity?> GetSingleAsync(Expression<Func<TEntity, bool>> expression) => 
-        await _dbSet.SingleOrDefaultAsync(expression).ConfigureAwait(false);
+        await _dbSet.SingleOrDefaultAsync(expression);
 
     public async Task<int> SaveChangesAsync() =>
-        await _db.SaveChangesAsync().ConfigureAwait(false);
+        await _db.SaveChangesAsync();
 }
