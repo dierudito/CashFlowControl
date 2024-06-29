@@ -1,0 +1,126 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Developer\\CashFlowControl\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2966722E-1E2A-4490-988F-397DDB550284}|src\\DMoreno.CashFlowControl.Infra.CrossCutting.IoC\\DMoreno.CashFlowControl.Infra.CrossCutting.IoC.csproj|c:\\developer\\cashflowcontrol\\src\\dmoreno.cashflowcontrol.infra.crosscutting.ioc\\appservicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2966722E-1E2A-4490-988F-397DDB550284}|src\\DMoreno.CashFlowControl.Infra.CrossCutting.IoC\\DMoreno.CashFlowControl.Infra.CrossCutting.IoC.csproj|solutionrelative:src\\dmoreno.cashflowcontrol.infra.crosscutting.ioc\\appservicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2AC07D97-EF96-4379-9AFE-CCD626B89866}|src\\DMoreno.CashFlowControl.Infra.Data\\DMoreno.CashFlowControl.Infra.Data.csproj|c:\\developer\\cashflowcontrol\\src\\dmoreno.cashflowcontrol.infra.data\\repository\\base\\baserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2AC07D97-EF96-4379-9AFE-CCD626B89866}|src\\DMoreno.CashFlowControl.Infra.Data\\DMoreno.CashFlowControl.Infra.Data.csproj|solutionrelative:src\\dmoreno.cashflowcontrol.infra.data\\repository\\base\\baserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7325865-2E18-43B1-8E52-7D7944136F91}|src\\DMoreno.CashFlowControl.Domain\\DMoreno.CashFlowControl.Domain.csproj|c:\\developer\\cashflowcontrol\\src\\dmoreno.cashflowcontrol.domain\\interfaces\\repositories\\base\\ibaserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7325865-2E18-43B1-8E52-7D7944136F91}|src\\DMoreno.CashFlowControl.Domain\\DMoreno.CashFlowControl.Domain.csproj|solutionrelative:src\\dmoreno.cashflowcontrol.domain\\interfaces\\repositories\\base\\ibaserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2AC07D97-EF96-4379-9AFE-CCD626B89866}|src\\DMoreno.CashFlowControl.Infra.Data\\DMoreno.CashFlowControl.Infra.Data.csproj|c:\\developer\\cashflowcontrol\\src\\dmoreno.cashflowcontrol.infra.data\\context\\cashflowcontroldbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2AC07D97-EF96-4379-9AFE-CCD626B89866}|src\\DMoreno.CashFlowControl.Infra.Data\\DMoreno.CashFlowControl.Infra.Data.csproj|solutionrelative:src\\dmoreno.cashflowcontrol.infra.data\\context\\cashflowcontroldbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7325865-2E18-43B1-8E52-7D7944136F91}|src\\DMoreno.CashFlowControl.Domain\\DMoreno.CashFlowControl.Domain.csproj|c:\\developer\\cashflowcontrol\\src\\dmoreno.cashflowcontrol.domain\\dtos\\paginationinputdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7325865-2E18-43B1-8E52-7D7944136F91}|src\\DMoreno.CashFlowControl.Domain\\DMoreno.CashFlowControl.Domain.csproj|solutionrelative:src\\dmoreno.cashflowcontrol.domain\\dtos\\paginationinputdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7325865-2E18-43B1-8E52-7D7944136F91}|src\\DMoreno.CashFlowControl.Domain\\DMoreno.CashFlowControl.Domain.csproj|c:\\developer\\cashflowcontrol\\src\\dmoreno.cashflowcontrol.domain\\entities\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7325865-2E18-43B1-8E52-7D7944136F91}|src\\DMoreno.CashFlowControl.Domain\\DMoreno.CashFlowControl.Domain.csproj|solutionrelative:src\\dmoreno.cashflowcontrol.domain\\entities\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e506b91c-c606-466a-90a9-123d1d1e12b3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AppServiceCollectionExtensions.cs",
+              "DocumentMoniker": "C:\\Developer\\CashFlowControl\\src\\DMoreno.CashFlowControl.Infra.CrossCutting.IoC\\AppServiceCollectionExtensions.cs",
+              "RelativeDocumentMoniker": "src\\DMoreno.CashFlowControl.Infra.CrossCutting.IoC\\AppServiceCollectionExtensions.cs",
+              "ToolTip": "C:\\Developer\\CashFlowControl\\src\\DMoreno.CashFlowControl.Infra.CrossCutting.IoC\\AppServiceCollectionExtensions.cs",
+              "RelativeToolTip": "src\\DMoreno.CashFlowControl.Infra.CrossCutting.IoC\\AppServiceCollectionExtensions.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T13:45:11.068Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BaseRepository.cs",
+              "DocumentMoniker": "C:\\Developer\\CashFlowControl\\src\\DMoreno.CashFlowControl.Infra.Data\\Repository\\Base\\BaseRepository.cs",
+              "RelativeDocumentMoniker": "src\\DMoreno.CashFlowControl.Infra.Data\\Repository\\Base\\BaseRepository.cs",
+              "ToolTip": "C:\\Developer\\CashFlowControl\\src\\DMoreno.CashFlowControl.Infra.Data\\Repository\\Base\\BaseRepository.cs",
+              "RelativeToolTip": "src\\DMoreno.CashFlowControl.Infra.Data\\Repository\\Base\\BaseRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T13:25:33.573Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CashFlowControlDbContext.cs",
+              "DocumentMoniker": "C:\\Developer\\CashFlowControl\\src\\DMoreno.CashFlowControl.Infra.Data\\Context\\CashFlowControlDbContext.cs",
+              "RelativeDocumentMoniker": "src\\DMoreno.CashFlowControl.Infra.Data\\Context\\CashFlowControlDbContext.cs",
+              "ToolTip": "C:\\Developer\\CashFlowControl\\src\\DMoreno.CashFlowControl.Infra.Data\\Context\\CashFlowControlDbContext.cs",
+              "RelativeToolTip": "src\\DMoreno.CashFlowControl.Infra.Data\\Context\\CashFlowControlDbContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAABWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T13:20:32.791Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PaginationInputDto.cs",
+              "DocumentMoniker": "C:\\Developer\\CashFlowControl\\src\\DMoreno.CashFlowControl.Domain\\Dtos\\PaginationInputDto.cs",
+              "RelativeDocumentMoniker": "src\\DMoreno.CashFlowControl.Domain\\Dtos\\PaginationInputDto.cs",
+              "ToolTip": "C:\\Developer\\CashFlowControl\\src\\DMoreno.CashFlowControl.Domain\\Dtos\\PaginationInputDto.cs",
+              "RelativeToolTip": "src\\DMoreno.CashFlowControl.Domain\\Dtos\\PaginationInputDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T13:14:24.787Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IBaseRepository.cs",
+              "DocumentMoniker": "C:\\Developer\\CashFlowControl\\src\\DMoreno.CashFlowControl.Domain\\Interfaces\\Repositories\\Base\\IBaseRepository.cs",
+              "RelativeDocumentMoniker": "src\\DMoreno.CashFlowControl.Domain\\Interfaces\\Repositories\\Base\\IBaseRepository.cs",
+              "ToolTip": "C:\\Developer\\CashFlowControl\\src\\DMoreno.CashFlowControl.Domain\\Interfaces\\Repositories\\Base\\IBaseRepository.cs",
+              "RelativeToolTip": "src\\DMoreno.CashFlowControl.Domain\\Interfaces\\Repositories\\Base\\IBaseRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T13:12:13.372Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Entity.cs",
+              "DocumentMoniker": "C:\\Developer\\CashFlowControl\\src\\DMoreno.CashFlowControl.Domain\\Entities\\Entity.cs",
+              "RelativeDocumentMoniker": "src\\DMoreno.CashFlowControl.Domain\\Entities\\Entity.cs",
+              "ToolTip": "C:\\Developer\\CashFlowControl\\src\\DMoreno.CashFlowControl.Domain\\Entities\\Entity.cs",
+              "RelativeToolTip": "src\\DMoreno.CashFlowControl.Domain\\Entities\\Entity.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T13:09:31.288Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
