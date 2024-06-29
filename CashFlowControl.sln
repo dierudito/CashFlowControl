@@ -1,0 +1,79 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34407.89
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Presentation", "1-Presentation", "{F5BC4BAF-F017-447B-95F7-ECAA0C4DBD1A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Application", "2-Application", "{0C5BF437-20DF-4E08-A602-8D5CCEE809D1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Domain", "3-Domain", "{4B071FA3-24DD-473B-B191-94BA07F44A93}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-Infra", "4-Infra", "{B082CACA-21F3-4CC9-BD9F-D654E9D22728}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5-Tests", "5-Tests", "{592627FF-F67C-4858-8696-E0E6B0DB26CF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1-Data", "4.1-Data", "{16C41677-05E2-40F9-A48B-6DD8BB58C4D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2-CrossCutting", "4.2-CrossCutting", "{598AE0A2-0F9D-4EAF-9CDF-84A802A9FBAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMoreno.CashFlowControl.Domain", "src\DMoreno.CashFlowControl.Domain\DMoreno.CashFlowControl.Domain.csproj", "{C7325865-2E18-43B1-8E52-7D7944136F91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMoreno.CashFlowControl.Infra.Data", "src\DMoreno.CashFlowControl.Infra.Data\DMoreno.CashFlowControl.Infra.Data.csproj", "{2AC07D97-EF96-4379-9AFE-CCD626B89866}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMoreno.CashFlowControl.Infra.CrossCutting.IoC", "src\DMoreno.CashFlowControl.Infra.CrossCutting.IoC\DMoreno.CashFlowControl.Infra.CrossCutting.IoC.csproj", "{2966722E-1E2A-4490-988F-397DDB550284}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMoreno.CashFlowControl.Application", "src\DMoreno.CashFlowControl.Application\DMoreno.CashFlowControl.Application.csproj", "{2A7AEC74-EC00-432F-884F-78D6BCC01146}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMoreno.CashFlowControl.bff", "src\DMoreno.CashFlowControl.bff\DMoreno.CashFlowControl.bff.csproj", "{F315F85D-D6A0-4BE8-84A0-4F7C92867701}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMoreno.CashFlowControl.UnityTests", "tests\DMoreno.CashFlowControl.UnityTests\DMoreno.CashFlowControl.UnityTests.csproj", "{97F59493-7F18-4232-8538-94C20BB99D8F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C7325865-2E18-43B1-8E52-7D7944136F91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7325865-2E18-43B1-8E52-7D7944136F91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7325865-2E18-43B1-8E52-7D7944136F91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7325865-2E18-43B1-8E52-7D7944136F91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AC07D97-EF96-4379-9AFE-CCD626B89866}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AC07D97-EF96-4379-9AFE-CCD626B89866}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AC07D97-EF96-4379-9AFE-CCD626B89866}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AC07D97-EF96-4379-9AFE-CCD626B89866}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2966722E-1E2A-4490-988F-397DDB550284}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2966722E-1E2A-4490-988F-397DDB550284}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2966722E-1E2A-4490-988F-397DDB550284}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2966722E-1E2A-4490-988F-397DDB550284}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A7AEC74-EC00-432F-884F-78D6BCC01146}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A7AEC74-EC00-432F-884F-78D6BCC01146}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A7AEC74-EC00-432F-884F-78D6BCC01146}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A7AEC74-EC00-432F-884F-78D6BCC01146}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F315F85D-D6A0-4BE8-84A0-4F7C92867701}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F315F85D-D6A0-4BE8-84A0-4F7C92867701}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F315F85D-D6A0-4BE8-84A0-4F7C92867701}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F315F85D-D6A0-4BE8-84A0-4F7C92867701}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97F59493-7F18-4232-8538-94C20BB99D8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97F59493-7F18-4232-8538-94C20BB99D8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97F59493-7F18-4232-8538-94C20BB99D8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97F59493-7F18-4232-8538-94C20BB99D8F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{16C41677-05E2-40F9-A48B-6DD8BB58C4D9} = {B082CACA-21F3-4CC9-BD9F-D654E9D22728}
+		{598AE0A2-0F9D-4EAF-9CDF-84A802A9FBAA} = {B082CACA-21F3-4CC9-BD9F-D654E9D22728}
+		{C7325865-2E18-43B1-8E52-7D7944136F91} = {4B071FA3-24DD-473B-B191-94BA07F44A93}
+		{2AC07D97-EF96-4379-9AFE-CCD626B89866} = {16C41677-05E2-40F9-A48B-6DD8BB58C4D9}
+		{2966722E-1E2A-4490-988F-397DDB550284} = {598AE0A2-0F9D-4EAF-9CDF-84A802A9FBAA}
+		{2A7AEC74-EC00-432F-884F-78D6BCC01146} = {0C5BF437-20DF-4E08-A602-8D5CCEE809D1}
+		{F315F85D-D6A0-4BE8-84A0-4F7C92867701} = {F5BC4BAF-F017-447B-95F7-ECAA0C4DBD1A}
+		{97F59493-7F18-4232-8538-94C20BB99D8F} = {592627FF-F67C-4858-8696-E0E6B0DB26CF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6A5BC7C1-122F-407D-8569-91DBB36175A8}
+	EndGlobalSection
+EndGlobal
