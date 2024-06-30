@@ -6,4 +6,17 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DMoreno.CashFlowControl.Application\DMoreno.CashFlowControl.Application.csproj" />
+    <ProjectReference Include="..\DMoreno.CashFlowControl.Domain\DMoreno.CashFlowControl.Domain.csproj" />
+    <ProjectReference Include="..\DMoreno.CashFlowControl.Infra.CrossCutting.Shared\DMoreno.CashFlowControl.Infra.CrossCutting.Shared.csproj" />
+    <ProjectReference Include="..\DMoreno.CashFlowControl.Infra.Data\DMoreno.CashFlowControl.Infra.Data.csproj" />
+  </ItemGroup>
+
 </Project>

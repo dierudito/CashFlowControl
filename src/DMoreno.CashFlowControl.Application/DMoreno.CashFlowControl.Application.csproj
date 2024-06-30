@@ -7,9 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="AppServices\Base\" />
-    <Folder Include="AutoMapper\" />
-    <Folder Include="ViewModels\" />
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DMoreno.CashFlowControl.Domain\DMoreno.CashFlowControl.Domain.csproj" />
+    <ProjectReference Include="..\DMoreno.CashFlowControl.Infra.CrossCutting.Shared\DMoreno.CashFlowControl.Infra.CrossCutting.Shared.csproj" />
   </ItemGroup>
 
 </Project>

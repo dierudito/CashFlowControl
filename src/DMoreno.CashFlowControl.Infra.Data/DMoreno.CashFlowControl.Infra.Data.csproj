@@ -19,11 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Mappings\" />
-    <Folder Include="UoW\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\DMoreno.CashFlowControl.Domain\DMoreno.CashFlowControl.Domain.csproj" />
   </ItemGroup>
 
