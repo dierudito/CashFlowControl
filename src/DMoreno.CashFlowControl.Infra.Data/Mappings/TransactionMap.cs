@@ -13,7 +13,7 @@ public class TransactionMap : IEntityTypeConfiguration<Transaction>
 
         builder.Property(t => t.Date).IsRequired(true);
         builder.Property(t => t.Type).IsRequired(true);
-        builder.Property(t => t.Amount).IsRequired(true);
+        builder.Property(t => t.Amount).HasColumnType("money").IsRequired(true);
         builder.Property(t => t.AccountId).IsRequired(false);
         builder.Property(t => t.CategoryId).IsRequired(false);
         builder.Property(t => t.Description)
