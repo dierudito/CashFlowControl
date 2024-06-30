@@ -53,7 +53,8 @@ public class BaseRepository<TEntity> : IDisposable, IBaseRepository<TEntity> whe
 
     public async Task DeleteAsync(Guid id)
     {
-        var entity = await GetByIdAsync(id);
+        await Task.Yield();
+        var entity = new TEntity { Id = id };
 
         if (entity != null)
             _dbSet.Remove(entity);
@@ -78,7 +79,7 @@ public class BaseRepository<TEntity> : IDisposable, IBaseRepository<TEntity> whe
     }
 
     public virtual async Task<TEntity?> GetByIdAsync(Guid id) =>
-        await _dbSet.FindAsync(id);
+        await _dbSet.FirstOrDefaultAsync(entity => entity.Id == id);
 
     public virtual async Task<IEnumerable<TEntity>> GetAllAsync() =>
         await _dbSet.ToListAsync();
@@ -112,7 +113,7 @@ public class BaseRepository<TEntity> : IDisposable, IBaseRepository<TEntity> whe
         return await result.ToListAsync();
     }
 
-    public virtual async Task<IEnumerable<TEntity>> GetForUpdateAsync(Expression<Func<TEntity, bool>> predicate)
+    public virtual async Task<IList<TEntity>> GetForUpdateAsync(Expression<Func<TEntity, bool>> predicate)
     {
         var result = _dbSet.Where(predicate);
         return await result.ToListAsync();

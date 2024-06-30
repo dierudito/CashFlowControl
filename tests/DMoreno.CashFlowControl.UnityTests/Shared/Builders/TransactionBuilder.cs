@@ -2,7 +2,7 @@
 using DMoreno.CashFlowControl.Domain.Entities;
 using DMoreno.CashFlowControl.Domain.Enums;
 
-namespace DMoreno.CashFlowControl.UnityTests.Shared;
+namespace DMoreno.CashFlowControl.UnityTests.Shared.Builders;
 public class TransactionBuilder
 {
     public Guid Id { get; private set; }

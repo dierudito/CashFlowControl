@@ -8,7 +8,7 @@ public class AccountMap : IEntityTypeConfiguration<Account>
 {
     public void Configure(EntityTypeBuilder<Account> builder)
     {
-        builder.ToTable(nameof(Account));
+        builder.ToTable("Accounts");
         builder.HasKey(a => a.Id);
 
         builder.Property(a => a.Name).HasColumnType("varchar").HasMaxLength(50).IsRequired(true);

@@ -485,3 +485,4 @@ $RECYCLE.BIN/
 /.vs
 /src/DMoreno.CashFlowControl.Application/obj
 /.vs
+/tests/DMoreno.CashFlowControl.UnityTests/obj

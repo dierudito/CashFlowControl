@@ -1,7 +1,7 @@
 ﻿using DMoreno.CashFlowControl.Domain.Entities;
 using DMoreno.CashFlowControl.Domain.Interfaces.Repositories;
 using DMoreno.CashFlowControl.Domain.Services;
-using DMoreno.CashFlowControl.UnityTests.Shared;
+using DMoreno.CashFlowControl.UnityTests.Shared.Builders;
 using FluentAssertions;
 using Moq;
 using Moq.AutoMock;
