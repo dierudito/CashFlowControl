@@ -12,11 +12,13 @@ using System.Net;
 
 namespace DMoreno.CashFlowControl.Application.AppServices;
 public class TransactionAppService(
-    IUnitOfWork uow, 
-    IMapper mapper, 
+    IUnitOfWork uow,
+    IMapper mapper,
     ILogger<TransactionAppService> logger,
     ITransactionService transactionService,
-    ITransactionRepository transactionRepository) :
+    ITransactionRepository transactionRepository,
+    IAccountRepository accountRepository,
+    ICategoryRepository categoryRepository) :
     BaseAppService(uow), ITransactionAppService
 {
     public async Task<Response<AddTransactionResponseViewModel>> AddAsync(AddTransactionRequestViewModel addTransactionRequestViewModel)
@@ -25,23 +27,20 @@ public class TransactionAppService(
 
         var transaction = mapper.Map<Transaction>(addTransactionRequestViewModel);
 
-        if (transaction is null)
-        {
-            logger.LogWarning("Request vazia");
-
-            return new(null, HttpStatusCode.BadRequest, "Não foi possível identificar os dados da transação");
-        }
-
         try
         {
+
+            if (transaction is null)
+            {
+                logger.LogWarning("Request vazia");
+
+                return new(null, HttpStatusCode.BadRequest, "Não foi possível identificar os dados da transação");
+            }
+
             logger.LogInformation("Adicionando a transação {CodTransaction} na base de dados", transaction.Id.ToString());
             await transactionService.AddAsync(transaction);
 
-            if (!await SaveChangesAsync())
-            {
-                logger.LogError("Não foi possível adicionar a transação {CodTransaction} na base de dados", transaction.Id.ToString());
-                return new(null, HttpStatusCode.UnprocessableContent, "Transação não adicionada");
-            }
+            await SaveChangesAsync();
 
             logger.LogInformation("Transação adicionada");
             var transactionResponse = mapper.Map<AddTransactionResponseViewModel>(transaction);
@@ -56,37 +55,41 @@ public class TransactionAppService(
 
     public async Task<Response<bool>> UpdateAsync(UpdateTransactionRequestViewModel updateTransactionRequestViewModel, Guid idTransaction)
     {
-        logger.LogInformation("Inicio do processo de alteração da transação {CodTransaction}", idTransaction.ToString());
-
-        var transactionDb = await transactionRepository.GetByIdAsync(idTransaction);
-
-        if (transactionDb is null)
-        {
-            logger.LogInformation("Transação {CodTransaction} não encontrada", idTransaction.ToString());
-            return new(false, HttpStatusCode.NotFound, "Transação não encontrada");
-        }
-
-        var transaction = mapper.Map<Transaction>(updateTransactionRequestViewModel);
-
-        if (transaction is null)
-        {
-            logger.LogWarning("Request vazia");
-
-            return new(false, HttpStatusCode.BadRequest, "Não foi possível identificar os dados da requisição");
-        }
-
         try
         {
-            transaction.Id = transactionDb.Id;
+            logger.LogInformation("Inicio do processo de alteração da transação {CodTransaction}", idTransaction.ToString());
+
+            if (!await IsTheAccountRightAsync(updateTransactionRequestViewModel.AccountId))
+            {
+                logger.LogInformation("Conta {CodAccount} não encontrada para a transação {CodTransaction}", updateTransactionRequestViewModel.AccountId, idTransaction.ToString());
+                return new(false, HttpStatusCode.BadRequest, "Conta não encontrada");
+            }
+
+            if (!await IsTheCategoryRightAsync(updateTransactionRequestViewModel.CategoryId))
+            {
+                logger.LogInformation("Categoria {CodCategory} não encontrada para a transação {CodTransaction}", updateTransactionRequestViewModel.CategoryId, idTransaction.ToString());
+                return new(false, HttpStatusCode.BadRequest, "Categoria não encontrada");
+            }
+
+            var transaction = mapper.Map<Transaction>(updateTransactionRequestViewModel);
+
+            if (transaction is null)
+            {
+                logger.LogWarning("Request vazia");
+
+                return new(false, HttpStatusCode.BadRequest, "Não foi possível identificar os dados da requisição");
+            }
 
             logger.LogInformation("Atualizando a transação {CodTransaction} na base de dados", idTransaction.ToString());
-            await transactionService.UpdateAsync(transaction);
-
-            if (!await SaveChangesAsync())
+            var transactionUpdated = await transactionService.UpdateAsync(transaction, idTransaction);
+            
+            if (transactionUpdated is null)
             {
-                logger.LogError("Não foi possível atualizar a transação {CodTransaction} na base de dados", idTransaction.ToString());
-                return new(false, HttpStatusCode.UnprocessableContent, "Transação não atualizada");
+                logger.LogInformation("Transação {CodTransaction} não encontrada", idTransaction.ToString());
+                return new(false, HttpStatusCode.NotFound, "Transação não encontrada");
             }
+
+            await SaveChangesAsync();
 
             logger.LogInformation("Transação atualizada");
             return new(true, message: "Transação atualizada");
@@ -100,26 +103,14 @@ public class TransactionAppService(
 
     public async Task<Response<bool>> DeleteAsync(Guid idTransaction)
     {
-        logger.LogInformation("Inicio do processo de exclusão da transação {CodTransaction}", idTransaction.ToString());
-
-        var transactionDb = await transactionRepository.GetByIdAsync(idTransaction);
-
-        if (transactionDb is null)
-        {
-            logger.LogInformation("Transação {CodTransaction} não encontrada", idTransaction.ToString());
-            return new(false, HttpStatusCode.NotFound, "Transação não encontrada");
-        }
-
         try
         {
+            logger.LogInformation("Inicio do processo de exclusão da transação {CodTransaction}", idTransaction.ToString());
+
             logger.LogInformation("Excluíndo a transação {CodTransaction} na base de dados", idTransaction.ToString());
             await transactionService.DeleteAsync(idTransaction);
 
-            if (!await SaveChangesAsync())
-            {
-                logger.LogError("Não foi possível excluir a transação {CodTransaction} na base de dados", idTransaction.ToString());
-                return new(false, HttpStatusCode.UnprocessableContent, "Transação não excluída");
-            }
+            await SaveChangesAsync();
 
             logger.LogInformation("Transação excluída");
             return new(true, message: "Transação excluída");
@@ -148,4 +139,10 @@ public class TransactionAppService(
 
         return new(transactionResponse, message: "ok");
     }
+
+    private async Task<bool> IsTheCategoryRightAsync(Guid? idCategory) =>
+        !idCategory.HasValue || (await categoryRepository.GetByIdAsync(idCategory.Value)) != null;
+
+    private async Task<bool> IsTheAccountRightAsync(Guid? idAccount) =>
+        !idAccount.HasValue || (await accountRepository.GetByIdAsync(idAccount.Value)) != null;
 }

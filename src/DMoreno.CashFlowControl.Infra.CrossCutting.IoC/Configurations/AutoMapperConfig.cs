@@ -13,6 +13,8 @@ public static class AutoMapperConfig
             mc.AllowNullCollections = true;
 
             mc.AddProfile(new TransactionMap());
+            mc.AddProfile(new AccountMap());
+            mc.AddProfile(new CategoryMap());
         });
 
         var mapper = mapConfig.CreateMapper();

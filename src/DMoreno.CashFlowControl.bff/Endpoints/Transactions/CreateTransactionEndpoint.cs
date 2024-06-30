@@ -2,7 +2,6 @@
 using DMoreno.CashFlowControl.Application.ViewModels.Requests;
 using DMoreno.CashFlowControl.Application.ViewModels.Responses;
 using DMoreno.CashFlowControl.bff.Extensions;
-using DMoreno.CashFlowControl.Infra.CrossCutting.Shared;
 
 namespace DMoreno.CashFlowControl.bff.Endpoints.Transactions;
 

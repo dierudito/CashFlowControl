@@ -40,9 +40,13 @@ public static class AppServiceCollectionExtensions
 
     private static IServiceCollection AddRepositories(this IServiceCollection services) =>
         services
-        .AddTransient<ITransactionRepository, TransactionRepository>();
+        .AddTransient<ITransactionRepository, TransactionRepository>()
+        .AddTransient<IAccountRepository, AccountRepository>()
+        .AddTransient<ICategoryRepository, CategoryRepository>();
 
     private static IServiceCollection AddServices(this IServiceCollection services) =>
         services
-        .AddTransient<ITransactionService, TransactionService>();
+        .AddTransient<ITransactionService, TransactionService>()
+        .AddTransient<IAccountService, AccountService>()
+        .AddTransient<ICategoryService, CategoryService>();
 }

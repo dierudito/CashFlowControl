@@ -4,6 +4,6 @@ using DMoreno.CashFlowControl.Infra.Data.Context;
 namespace DMoreno.CashFlowControl.Infra.Data.UoW;
 public class UnitOfWork(CashFlowControlDbContext db) : IUnitOfWork
 {
-    public async Task<int> CommitAsync() =>
+    public async Task CommitAsync() =>
         await db.SaveChangesAsync();
 }

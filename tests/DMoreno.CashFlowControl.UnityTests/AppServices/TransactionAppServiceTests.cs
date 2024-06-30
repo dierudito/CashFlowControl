@@ -18,6 +18,8 @@ public class TransactionAppServiceTests
     private readonly Mock<IMapper> mapper;
     private readonly Mock<ITransactionService> transactionService;
     private readonly Mock<ITransactionRepository> transactionRepository;
+    private readonly Mock<IAccountRepository> accountRepository;
+    private readonly Mock<ICategoryRepository> categoryRepository;
     private readonly Mock<IUnitOfWork> unitOfWork;
     private readonly TransactionAppService appService;
 
@@ -28,6 +30,8 @@ public class TransactionAppServiceTests
         mapper = mocker.GetMock<IMapper>();
         transactionService = mocker.GetMock<ITransactionService>();
         transactionRepository = mocker.GetMock<ITransactionRepository>();
+        accountRepository = mocker.GetMock<IAccountRepository>();
+        categoryRepository = mocker.GetMock<ICategoryRepository>();
         unitOfWork = mocker.GetMock<IUnitOfWork>();
 
         appService = mocker.CreateInstance<TransactionAppService>();
@@ -48,9 +52,6 @@ public class TransactionAppServiceTests
         mapper
             .Setup(m => m.Map<AddTransactionResponseViewModel>(It.IsAny<Transaction>()))
             .Returns(transcationResponse);
-        unitOfWork
-            .Setup(u => u.CommitAsync())
-            .ReturnsAsync(1);
 
         // Act
         var response = await appService.AddAsync(request);
@@ -93,29 +94,6 @@ public class TransactionAppServiceTests
 
         // Assert
         transactionService.Verify(t => t.AddAsync(It.IsAny<Transaction>()), Times.Never());
-    }
-
-    [Fact(DisplayName = "Should Return UnprocessableEntity When Adding Transaction The SaveChangesAsync Returns False")]
-    [Trait(nameof(TransactionAppService), nameof(TransactionAppService.AddAsync))]
-    public async Task ShouldReturnUnprocessableEntityWhenAddingTransactionTheSaveChangesAsyncReturnsFalse()
-    {
-        // Arrange
-        var request = AddTransactionRequestViewModelBuilder.New().Build();
-        var transaction = TransactionBuilder.New().Build();
-
-        mapper
-            .Setup(m => m.Map<Transaction>(It.IsAny<AddTransactionRequestViewModel>()))
-            .Returns(transaction);
-
-        unitOfWork
-            .Setup(u => u.CommitAsync())
-            .ReturnsAsync(0);
-
-        // Act
-        var response = await appService.AddAsync(request);
-
-        // Assert
-        response.Code.Should().Be(HttpStatusCode.UnprocessableContent);
     }
 
     [Fact(DisplayName = "Should Return InternalServerError When Adding Transaction The Error Occurs While Persisting Data")]
@@ -188,15 +166,18 @@ public class TransactionAppServiceTests
         var request = UpdateTransactionRequestViewModelBuilder.New().Build();
         var transaction = TransactionBuilder.New().Build();
 
-        transactionRepository
-            .Setup(t => t.GetByIdAsync(It.IsAny<Guid>()))
+        transactionService
+            .Setup(t => t.UpdateAsync(It.IsAny<Transaction>(), It.IsAny<Guid>()))
             .ReturnsAsync(transaction);
+        categoryRepository
+            .Setup(t => t.GetByIdAsync(It.IsAny<Guid>()))
+            .ReturnsAsync(new Category());
+        accountRepository
+            .Setup(t => t.GetByIdAsync(It.IsAny<Guid>()))
+            .ReturnsAsync(new Account());
         mapper
             .Setup(m => m.Map<Transaction>(It.IsAny<UpdateTransactionRequestViewModel>()))
             .Returns(transaction);
-        unitOfWork
-            .Setup(u => u.CommitAsync())
-            .ReturnsAsync(1);
 
         // Act
         var response = await appService.UpdateAsync(request, idTransaction);
@@ -207,7 +188,7 @@ public class TransactionAppServiceTests
         entity.Id == transaction.Id &&
         entity.Type == transaction.Type &&
         entity.Amount == transaction.Amount &&
-        entity.Date == transaction.Date)), Times.Once());
+        entity.Date == transaction.Date), idTransaction), Times.Once());
 
         unitOfWork.Verify(u => u.CommitAsync(), Times.Once());
     }
@@ -219,6 +200,17 @@ public class TransactionAppServiceTests
         // Arrange
         var idTransaction = Guid.NewGuid();
         var request = UpdateTransactionRequestViewModelBuilder.New().Build();
+        var transaction = TransactionBuilder.New().Build();
+
+        categoryRepository
+            .Setup(t => t.GetByIdAsync(It.IsAny<Guid>()))
+            .ReturnsAsync(new Category());
+        accountRepository
+            .Setup(t => t.GetByIdAsync(It.IsAny<Guid>()))
+            .ReturnsAsync(new Account());
+        mapper
+            .Setup(m => m.Map<Transaction>(It.IsAny<UpdateTransactionRequestViewModel>()))
+            .Returns(transaction);
 
         // Act
         var response = await appService.UpdateAsync(request, idTransaction);
@@ -233,12 +225,9 @@ public class TransactionAppServiceTests
     {
         // Arrange
         var idTransaction = Guid.NewGuid();
-        var request = UpdateTransactionRequestViewModelBuilder.New().Build();
-        var transaction = TransactionBuilder.New().Build();
-
-        transactionRepository
-            .Setup(t => t.GetByIdAsync(It.IsAny<Guid>()))
-            .ReturnsAsync(transaction);
+        var request = 
+            UpdateTransactionRequestViewModelBuilder.New()
+            .WithAccountId(null).WithCategoryId(null).Build();
 
         // Act
         var response = await appService.UpdateAsync(request, idTransaction);
@@ -253,45 +242,15 @@ public class TransactionAppServiceTests
     {
         // Arrange
         var idTransaction = Guid.NewGuid();
-        var request = UpdateTransactionRequestViewModelBuilder.New().Build();
-        var transaction = TransactionBuilder.New().Build();
-
-        transactionRepository
-            .Setup(t => t.GetByIdAsync(It.IsAny<Guid>()))
-            .ReturnsAsync(transaction);
+        var request = 
+            UpdateTransactionRequestViewModelBuilder.New()
+            .WithAccountId(null).WithCategoryId(null).Build();
 
         // Act
         var response = await appService.UpdateAsync(request, idTransaction);
 
         // Assert
-        transactionService.Verify(t => t.UpdateAsync(It.IsAny<Transaction>()), Times.Never());
-    }
-
-    [Fact(DisplayName = "Should Return UnprocessableEntity When Updating Transaction The SaveChangesAsync Returns False")]
-    [Trait(nameof(TransactionAppService), nameof(TransactionAppService.UpdateAsync))]
-    public async Task ShouldReturnUnprocessableEntityWhenUpdatingTransactionTheSaveChangesAsyncReturnsFalse()
-    {
-        // Arrange
-        var idTransaction = Guid.NewGuid();
-        var request = UpdateTransactionRequestViewModelBuilder.New().Build();
-        var transaction = TransactionBuilder.New().Build();
-
-        transactionRepository
-            .Setup(t => t.GetByIdAsync(It.IsAny<Guid>()))
-            .ReturnsAsync(transaction);
-        mapper
-            .Setup(m => m.Map<Transaction>(It.IsAny<UpdateTransactionRequestViewModel>()))
-            .Returns(transaction);
-
-        unitOfWork
-            .Setup(u => u.CommitAsync())
-            .ReturnsAsync(0);
-
-        // Act
-        var response = await appService.UpdateAsync(request, idTransaction);
-
-        // Assert
-        response.Code.Should().Be(HttpStatusCode.UnprocessableContent);
+        transactionService.Verify(t => t.UpdateAsync(It.IsAny<Transaction>(), It.IsAny<Guid>()), Times.Never());
     }
 
     [Fact(DisplayName = "Should Return InternalServerError When Updating Transaction The Error Occurs While Persisting Data")]
@@ -300,17 +259,17 @@ public class TransactionAppServiceTests
     {
         // Arrange
         var idTransaction = Guid.NewGuid();
-        var request = UpdateTransactionRequestViewModelBuilder.New().Build();
+        var request = 
+            UpdateTransactionRequestViewModelBuilder.New()
+            .WithAccountId(null).WithCategoryId(null).Build();
         var transaction = TransactionBuilder.New().Build();
 
-        transactionRepository
-            .Setup(t => t.GetByIdAsync(It.IsAny<Guid>()))
-            .ReturnsAsync(transaction);
         mapper
             .Setup(m => m.Map<Transaction>(It.IsAny<UpdateTransactionRequestViewModel>()))
             .Returns(transaction);
+
         transactionService
-            .Setup(u => u.UpdateAsync(It.IsAny<Transaction>()))
+            .Setup(t => t.UpdateAsync(It.IsAny<Transaction>(), It.IsAny<Guid>()))
             .ThrowsAsync(new Exception());
 
         // Act
@@ -318,6 +277,40 @@ public class TransactionAppServiceTests
 
         // Assert
         response.Code.Should().Be(HttpStatusCode.InternalServerError);
+    }
+
+    [Fact(DisplayName = "Should Return BadRequest When Updating Transaction The Category Not Found")]
+    [Trait(nameof(TransactionAppService), nameof(TransactionAppService.UpdateAsync))]
+    public async Task ShouldReturnBadRequestWhenUpdatingTransactionTheCategoryNotFound()
+    {
+        // Arrange
+        var idTransaction = Guid.NewGuid();
+        var request = 
+            UpdateTransactionRequestViewModelBuilder.New()
+            .WithAccountId(null).Build();
+
+        // Act
+        var response = await appService.UpdateAsync(request, idTransaction);
+
+        // Assert
+        response.Code.Should().Be(HttpStatusCode.BadRequest);
+    }
+
+    [Fact(DisplayName = "Should Return BadRequest When Updating Transaction The Account Not Found")]
+    [Trait(nameof(TransactionAppService), nameof(TransactionAppService.UpdateAsync))]
+    public async Task ShouldReturnBadRequestWhenUpdatingTransactionTheAccountNotFound()
+    {
+        // Arrange
+        var idTransaction = Guid.NewGuid();
+        var request = 
+            UpdateTransactionRequestViewModelBuilder.New()
+            .WithCategoryId(null).Build();
+
+        // Act
+        var response = await appService.UpdateAsync(request, idTransaction);
+
+        // Assert
+        response.Code.Should().Be(HttpStatusCode.BadRequest);
     }
 
 
@@ -335,14 +328,6 @@ public class TransactionAppServiceTests
     {
         // Arrange
         var idTransaction = Guid.NewGuid();
-        var transaction = TransactionBuilder.New().Build();
-
-        transactionRepository
-            .Setup(t => t.GetByIdAsync(It.IsAny<Guid>()))
-            .ReturnsAsync(transaction);
-        unitOfWork
-            .Setup(u => u.CommitAsync())
-            .ReturnsAsync(1);
 
         // Act
         var response = await appService.DeleteAsync(idTransaction);
@@ -354,54 +339,12 @@ public class TransactionAppServiceTests
         unitOfWork.Verify(u => u.CommitAsync(), Times.Once());
     }
 
-    [Fact(DisplayName = "Should Return NotFound When Deleting Transaction Not Found The Transaction")]
-    [Trait(nameof(TransactionAppService), nameof(TransactionAppService.DeleteAsync))]
-    public async Task ShouldReturnNotFoundWhenDeletingTransactionNotFoundTheTransaction()
-    {
-        // Arrange
-        var idTransaction = Guid.NewGuid();
-
-        // Act
-        var response = await appService.DeleteAsync(idTransaction);
-
-        // Assert
-        response.Code.Should().Be(HttpStatusCode.NotFound);
-    }
-
-    [Fact(DisplayName = "Should Return UnprocessableEntity When Deleting Transaction The SaveChangesAsync Returns False")]
-    [Trait(nameof(TransactionAppService), nameof(TransactionAppService.DeleteAsync))]
-    public async Task ShouldReturnUnprocessableEntityWhenDeletingTransactionTheSaveChangesAsyncReturnsFalse()
-    {
-        // Arrange
-        var idTransaction = Guid.NewGuid();
-        var transaction = TransactionBuilder.New().Build();
-
-        transactionRepository
-            .Setup(t => t.GetByIdAsync(It.IsAny<Guid>()))
-            .ReturnsAsync(transaction);
-
-        unitOfWork
-            .Setup(u => u.CommitAsync())
-            .ReturnsAsync(0);
-
-        // Act
-        var response = await appService.DeleteAsync(idTransaction);
-
-        // Assert
-        response.Code.Should().Be(HttpStatusCode.UnprocessableContent);
-    }
-
     [Fact(DisplayName = "Should Return InternalServerError When Deleting Transaction The Error Occurs While Persisting Data")]
     [Trait(nameof(TransactionAppService), nameof(TransactionAppService.DeleteAsync))]
     public async Task ShouldReturnInternalServerErrorWhenDeletingTransactionTheErrorOccursWhilePersistingData()
     {
         // Arrange
         var idTransaction = Guid.NewGuid();
-        var transaction = TransactionBuilder.New().Build();
-
-        transactionRepository
-            .Setup(t => t.GetByIdAsync(It.IsAny<Guid>()))
-            .ReturnsAsync(transaction);
         transactionService
             .Setup(u => u.DeleteAsync(It.IsAny<Guid>()))
             .ThrowsAsync(new Exception());

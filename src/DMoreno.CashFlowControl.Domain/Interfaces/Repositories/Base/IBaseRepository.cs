@@ -8,7 +8,7 @@ public interface IBaseRepository<TEntity> where TEntity : Entity
 {
     Task<TEntity> AddAsync(TEntity entity);
     Task<TEntity> UpdateAsync(TEntity entity);
-    Task<TEntity?> UpdateAsync(TEntity updated, int key);
+    Task<TEntity?> UpdateAsync(TEntity updated, Guid key);
     Task DeleteAsync(Guid id);
     Task DeleteAsync(TEntity entity);
     Task DeleteRangeAsync(Expression<Func<TEntity, bool>>? filter = null);
@@ -23,6 +23,7 @@ public interface IBaseRepository<TEntity> where TEntity : Entity
     Task<IEnumerable<TEntity>> GetByAsync(Expression<Func<TEntity, bool>> predicate);
 
     Task<IList<TEntity>> GetForUpdateAsync(Expression<Func<TEntity, bool>> predicate);
+    Task<bool> AreThereAsync(Expression<Func<TEntity, bool>> predicate);
 
     Task<int> SaveChangesAsync();
 }

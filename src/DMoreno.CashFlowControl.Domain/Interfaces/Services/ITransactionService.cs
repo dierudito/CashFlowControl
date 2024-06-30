@@ -6,7 +6,7 @@ public interface ITransactionService
 {
     Task<Transaction> AddAsync(Transaction transaction);
 
-    Task<Transaction> UpdateAsync(Transaction transaction);
+    Task<Transaction?> UpdateAsync(Transaction transaction, Guid idTransaction);
 
     Task DeleteAsync(Guid id);
 }

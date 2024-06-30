@@ -39,14 +39,25 @@ public class BaseRepository<TEntity> : IDisposable, IBaseRepository<TEntity> whe
         return entity;
     }
 
-    public async Task<TEntity?> UpdateAsync(TEntity updated, int key)
+    public async Task<TEntity?> UpdateAsync(TEntity updated, Guid key)
     {
         if (updated == null)
             return null;
 
         TEntity existing = await _dbSet.FindAsync(key);
-        if (existing != null)
-            _db.Entry(existing).CurrentValues.SetValues(updated);
+        try
+        {
+            if (existing != null)
+            {
+                updated.Id = key;
+                _db.Entry(existing).CurrentValues.SetValues(updated);
+            }
+        }
+        catch (Exception e)
+        {
+
+            throw;
+        }
 
         return existing;
     }
@@ -127,6 +138,8 @@ public class BaseRepository<TEntity> : IDisposable, IBaseRepository<TEntity> whe
 
     public async Task<TEntity?> GetSingleAsync(Expression<Func<TEntity, bool>> expression) => 
         await _dbSet.SingleOrDefaultAsync(expression);
+    public async Task<bool> AreThereAsync(Expression<Func<TEntity, bool>> predicate) =>
+        await _dbSet.AnyAsync(predicate);
 
     public async Task<int> SaveChangesAsync() =>
         await _db.SaveChangesAsync();

@@ -1,8 +1,10 @@
 ﻿using DMoreno.CashFlowControl.Application.AppServices;
 using DMoreno.CashFlowControl.Application.Interfaces;
+using DMoreno.CashFlowControl.Domain.Interfaces.Repositories;
 using DMoreno.CashFlowControl.Infra.CrossCutting.IoC;
 using DMoreno.CashFlowControl.Infra.CrossCutting.IoC.Configurations;
 using DMoreno.CashFlowControl.Infra.CrossCutting.Shared;
+using DMoreno.CashFlowControl.Infra.Data.Repository;
 
 namespace DMoreno.CashFlowControl.bff.Extensions;
 
@@ -18,7 +20,9 @@ public static class ServiceCollectionExtension
 
     private static IServiceCollection AddAppServices(this IServiceCollection services) =>
         services
-        .AddTransient<ITransactionAppService, TransactionAppService>();
+        .AddTransient<ITransactionAppService, TransactionAppService>()
+        .AddTransient<IAccountAppService, AccountAppService>()
+        .AddTransient<ICategoryAppService, CategoryAppService>();
 
     public static IServiceCollection AddDocumentation(this IServiceCollection services) =>
         services
