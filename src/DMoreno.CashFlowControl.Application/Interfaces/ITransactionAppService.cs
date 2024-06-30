@@ -7,6 +7,12 @@ public interface ITransactionAppService
     Task<Response<AddTransactionResponseViewModel>> 
         AddAsync(AddTransactionRequestViewModel addTransactionRequestViewModel);
 
+    Task<Response<bool>> 
+        UpdateAsync(UpdateTransactionRequestViewModel updateTransactionRequestViewModel, Guid idTransaction);
+
+    Task<Response<bool>>
+        DeleteAsync(Guid idTransaction);
+
     Task<Response<GetTransactionByIdResponseViewModel>>
         GetByIdAsync(Guid id);
 }

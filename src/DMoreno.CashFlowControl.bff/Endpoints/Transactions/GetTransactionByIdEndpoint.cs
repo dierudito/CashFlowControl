@@ -17,8 +17,6 @@ public class GetTransactionByIdEndpoint : IEndpoint
     private static async Task<IResult> HandleAsync(ITransactionAppService appService, Guid id)
     {
         var response = await appService.GetByIdAsync(id);
-        return response.IsSuccess
-            ? TypedResults.Ok(response)
-            : TypedResults.StatusCode((int)response.Code);
+        return ResponseResult<GetTransactionByIdResponseViewModel>.CreateResponse(response);
     }
 }

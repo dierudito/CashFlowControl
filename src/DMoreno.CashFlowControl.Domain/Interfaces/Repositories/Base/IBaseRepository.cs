@@ -22,7 +22,7 @@ public interface IBaseRepository<TEntity> where TEntity : Entity
 
     Task<IEnumerable<TEntity>> GetByAsync(Expression<Func<TEntity, bool>> predicate);
 
-    Task<IEnumerable<TEntity>> GetForUpdateAsync(Expression<Func<TEntity, bool>> predicate);
+    Task<IList<TEntity>> GetForUpdateAsync(Expression<Func<TEntity, bool>> predicate);
 
     Task<int> SaveChangesAsync();
 }

@@ -10,6 +10,8 @@ public class TransactionMap : Profile
     {
         CreateMap<AddTransactionRequestViewModel, Transaction>()
             .ForMember(t => t.Amount, m => m.MapFrom(src => src.Amount < 0 ? src.Amount * -1 : src.Amount));
+        CreateMap<UpdateTransactionRequestViewModel, Transaction>()
+            .ForMember(t => t.Amount, m => m.MapFrom(src => src.Amount < 0 ? src.Amount * -1 : src.Amount));
         CreateMap<Transaction, AddTransactionResponseViewModel>()
             .ForMember(t => t.Date, m => m.MapFrom(src => src.Date.ToString("dd/MM/yyyy HH:mm")))
             .ForMember(t => t.Amount, m => m.MapFrom(src => src.Amount.ToString("C2")));

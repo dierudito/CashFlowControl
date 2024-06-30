@@ -19,8 +19,6 @@ public class CreateTransactionEndpoint : IEndpoint
     private static async Task<IResult> HandleAsync(ITransactionAppService appService, AddTransactionRequestViewModel request)
     {
         var response = await appService.AddAsync(request);
-        return response.IsSuccess
-            ? TypedResults.Created($"v1/{ApiConfigurations.RouteTransaction}/{response.Data?.Id}", response)
-            : TypedResults.StatusCode((int)response.Code);
+        return ResponseResult<AddTransactionResponseViewModel>.CreateResponse(response);
     }
 }

@@ -18,6 +18,8 @@ public static class Endpoint
         endpoints.MapGroup($"v1/{ApiConfigurations.RouteTransaction}")
             .WithTags("Transactions")
             .MapEndpoint<CreateTransactionEndpoint>()
+            .MapEndpoint<UpdateTransactionEndpoint>()
+            .MapEndpoint<DeleteTransactionEndpoint>()
             .MapEndpoint<GetTransactionByIdEndpoint>();
     }
 
