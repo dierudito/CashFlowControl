@@ -4,6 +4,7 @@ using DMoreno.CashFlowControl.Application.Interfaces;
 using DMoreno.CashFlowControl.Application.ViewModels.Requests;
 using DMoreno.CashFlowControl.Application.ViewModels.Responses;
 using DMoreno.CashFlowControl.Domain.Entities;
+using DMoreno.CashFlowControl.Domain.Extensions;
 using DMoreno.CashFlowControl.Domain.Interfaces.Repositories;
 using DMoreno.CashFlowControl.Domain.Interfaces.Services;
 using DMoreno.CashFlowControl.Domain.Interfaces.UoW;
@@ -18,7 +19,8 @@ public class TransactionAppService(
     ITransactionService transactionService,
     ITransactionRepository transactionRepository,
     IAccountRepository accountRepository,
-    ICategoryRepository categoryRepository) :
+    ICategoryRepository categoryRepository,
+    ICashFlowService cashFlowService) :
     BaseAppService(uow), ITransactionAppService
 {
     public async Task<Response<AddTransactionResponseViewModel>> AddAsync(AddTransactionRequestViewModel addTransactionRequestViewModel)
@@ -29,13 +31,17 @@ public class TransactionAppService(
 
         try
         {
-
             if (transaction is null)
             {
                 logger.LogWarning("Request vazia");
 
                 return new(null, HttpStatusCode.BadRequest, "Não foi possível identificar os dados da transação");
             }
+
+            var cashFlow = await cashFlowService.GetOrCreateByDateAsync(DateTime.Now.DateOnly());
+            cashFlow.IncrementTotals(transaction.Type, transaction.Amount);
+            transaction.CashFlowId = cashFlow.Id;
+            await cashFlowService.UpdateAsync(cashFlow, cashFlow.Id);
 
             logger.LogInformation("Adicionando a transação {CodTransaction} na base de dados", transaction.Id.ToString());
             await transactionService.AddAsync(transaction);
@@ -80,14 +86,26 @@ public class TransactionAppService(
                 return new(false, HttpStatusCode.BadRequest, "Não foi possível identificar os dados da requisição");
             }
 
-            logger.LogInformation("Atualizando a transação {CodTransaction} na base de dados", idTransaction.ToString());
-            var transactionUpdated = await transactionService.UpdateAsync(transaction, idTransaction);
-            
-            if (transactionUpdated is null)
+            var transactionDb = await transactionRepository.GetByIdAsync(idTransaction);
+
+            if (transactionDb is null)
             {
                 logger.LogInformation("Transação {CodTransaction} não encontrada", idTransaction.ToString());
                 return new(false, HttpStatusCode.NotFound, "Transação não encontrada");
             }
+
+            if (transactionDb.CashFlow.ReleaseDate != DateTime.Now.DateOnly())
+            {
+                logger.LogWarning("Tentativa de alteração de transação de dias anteriores");
+                return new(false, HttpStatusCode.Unauthorized, "Não é possível alterar transação de dias anteriores");
+            }
+
+            transactionDb.CashFlow.UpdateTotals(transactionDb.Type, transactionDb.Amount, transaction.Type, transaction.Amount);
+            transaction.CashFlow = transactionDb.CashFlow;
+            transaction.CashFlowId = transactionDb.CashFlowId;
+
+            logger.LogInformation("Atualizando a transação {CodTransaction} na base de dados", idTransaction.ToString());
+            await transactionService.UpdateAsync(transaction, idTransaction);            
 
             await SaveChangesAsync();
 
@@ -107,8 +125,24 @@ public class TransactionAppService(
         {
             logger.LogInformation("Inicio do processo de exclusão da transação {CodTransaction}", idTransaction.ToString());
 
+            var transactionDb = await transactionRepository.GetByIdAsync(idTransaction);
+
+            if (transactionDb is null)
+            {
+                logger.LogInformation("Transação {CodTransaction} não encontrada", idTransaction.ToString());
+                return new(false, HttpStatusCode.NotFound, "Transação não encontrada");
+            }
+
+            if (transactionDb.CashFlow.ReleaseDate != DateTime.Now.DateOnly())
+            {
+                logger.LogWarning("Tentativa de exclusão de transação de dias anteriores");
+                return new(false, HttpStatusCode.Unauthorized, "Não é possível excluir transação de dias anteriores");
+            }
+            transactionDb.CashFlow.UpdateTotals(transactionDb.Type, transactionDb.Amount);
+
             logger.LogInformation("Excluíndo a transação {CodTransaction} na base de dados", idTransaction.ToString());
             await transactionService.DeleteAsync(idTransaction);
+            await cashFlowService.UpdateAsync(transactionDb.CashFlow, transactionDb.CashFlowId);
 
             await SaveChangesAsync();
 

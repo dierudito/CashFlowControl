@@ -1,5 +1,5 @@
 ﻿using DMoreno.CashFlowControl.Infra.CrossCutting.Shared;
-using DMoreno.CashFlowControl.Infra.Data.Context;
+using DMoreno.CashFlowControl.Infra.Data.Context.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 

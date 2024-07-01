@@ -1,11 +1,14 @@
 ﻿using AutoMapper;
+using Bogus;
 using DMoreno.CashFlowControl.Application.AppServices;
 using DMoreno.CashFlowControl.Application.ViewModels.Requests;
 using DMoreno.CashFlowControl.Application.ViewModels.Responses;
 using DMoreno.CashFlowControl.Domain.Entities;
+using DMoreno.CashFlowControl.Domain.Extensions;
 using DMoreno.CashFlowControl.Domain.Interfaces.Repositories;
 using DMoreno.CashFlowControl.Domain.Interfaces.Services;
 using DMoreno.CashFlowControl.Domain.Interfaces.UoW;
+using DMoreno.CashFlowControl.Domain.Services;
 using DMoreno.CashFlowControl.UnityTests.Shared.Builders;
 using FluentAssertions;
 using Moq;
@@ -15,16 +18,19 @@ using System.Net;
 namespace DMoreno.CashFlowControl.UnityTests.AppServices;
 public class TransactionAppServiceTests
 {
+    private readonly Faker faker;
     private readonly Mock<IMapper> mapper;
     private readonly Mock<ITransactionService> transactionService;
     private readonly Mock<ITransactionRepository> transactionRepository;
     private readonly Mock<IAccountRepository> accountRepository;
     private readonly Mock<ICategoryRepository> categoryRepository;
+    private readonly Mock<ICashFlowService> cashFlowService;
     private readonly Mock<IUnitOfWork> unitOfWork;
     private readonly TransactionAppService appService;
 
     public TransactionAppServiceTests()
     {
+        faker = new();
         var mocker = new AutoMocker();
 
         mapper = mocker.GetMock<IMapper>();
@@ -32,6 +38,7 @@ public class TransactionAppServiceTests
         transactionRepository = mocker.GetMock<ITransactionRepository>();
         accountRepository = mocker.GetMock<IAccountRepository>();
         categoryRepository = mocker.GetMock<ICategoryRepository>();
+        cashFlowService = mocker.GetMock<ICashFlowService>();
         unitOfWork = mocker.GetMock<IUnitOfWork>();
 
         appService = mocker.CreateInstance<TransactionAppService>();
@@ -45,6 +52,11 @@ public class TransactionAppServiceTests
         var request = AddTransactionRequestViewModelBuilder.New().Build();
         var transaction = TransactionBuilder.New().Build();
         var transcationResponse = AddTransactionResponseViewModelBuilder.New().Build();
+        var cashFlow = CashFlowBuilder.New().Build();
+
+        cashFlowService
+            .Setup(c => c.GetOrCreateByDateAsync(It.IsAny<DateOnly>()))
+            .ReturnsAsync(cashFlow);
 
         mapper
             .Setup(m => m.Map<Transaction>(It.IsAny<AddTransactionRequestViewModel>()))
@@ -62,8 +74,7 @@ public class TransactionAppServiceTests
         transactionService.Verify(t => t.AddAsync(It.Is<Transaction>(entity => 
         entity.Id == transaction.Id &&
         entity.Type == transaction.Type &&
-        entity.Amount == transaction.Amount &&
-        entity.Date == transaction.Date)), Times.Once());
+        entity.Amount == transaction.Amount)), Times.Once());
 
         unitOfWork.Verify(u => u.CommitAsync(), Times.Once());
     }
@@ -164,7 +175,12 @@ public class TransactionAppServiceTests
         // Arrange
         var idTransaction = Guid.NewGuid();
         var request = UpdateTransactionRequestViewModelBuilder.New().Build();
-        var transaction = TransactionBuilder.New().Build();
+        var cashFlow = CashFlowBuilder.New().WithReleaseDate(DateTime.Now.DateOnly()).Build();
+        var transaction = TransactionBuilder.New().WithCashFlow(cashFlow).Build();
+
+        transactionRepository
+            .Setup(t => t.GetByIdAsync(It.IsAny<Guid>()))
+            .ReturnsAsync(transaction);
 
         transactionService
             .Setup(t => t.UpdateAsync(It.IsAny<Transaction>(), It.IsAny<Guid>()))
@@ -187,8 +203,7 @@ public class TransactionAppServiceTests
         transactionService.Verify(t => t.UpdateAsync(It.Is<Transaction>(entity =>
         entity.Id == transaction.Id &&
         entity.Type == transaction.Type &&
-        entity.Amount == transaction.Amount &&
-        entity.Date == transaction.Date), idTransaction), Times.Once());
+        entity.Amount == transaction.Amount), idTransaction), Times.Once());
 
         unitOfWork.Verify(u => u.CommitAsync(), Times.Once());
     }
@@ -262,7 +277,12 @@ public class TransactionAppServiceTests
         var request = 
             UpdateTransactionRequestViewModelBuilder.New()
             .WithAccountId(null).WithCategoryId(null).Build();
-        var transaction = TransactionBuilder.New().Build();
+        var cashFlow = CashFlowBuilder.New().WithReleaseDate(DateTime.Now.DateOnly()).Build();
+        var transaction = TransactionBuilder.New().WithCashFlow(cashFlow).Build();
+
+        transactionRepository
+            .Setup(t => t.GetByIdAsync(It.IsAny<Guid>()))
+            .ReturnsAsync(transaction);
 
         mapper
             .Setup(m => m.Map<Transaction>(It.IsAny<UpdateTransactionRequestViewModel>()))
@@ -313,6 +333,33 @@ public class TransactionAppServiceTests
         response.Code.Should().Be(HttpStatusCode.BadRequest);
     }
 
+    [Fact(DisplayName = "Should Return Unauthorized When Updating Past Transaction")]
+    [Trait(nameof(TransactionAppService), nameof(TransactionAppService.UpdateAsync))]
+    public async Task ShouldReturnUnauthorizedWhenUpdatingPastTransaction()
+    {
+        // Arrange
+        var idTransaction = Guid.NewGuid();
+        var request =
+            UpdateTransactionRequestViewModelBuilder.New()
+            .WithAccountId(null).WithCategoryId(null).Build();
+        var cashFlow = CashFlowBuilder.New().WithReleaseDate(faker.Date.PastDateOnly()).Build();
+        var transaction = TransactionBuilder.New().WithCashFlow(cashFlow).Build();
+
+        mapper
+            .Setup(m => m.Map<Transaction>(It.IsAny<UpdateTransactionRequestViewModel>()))
+            .Returns(transaction);
+
+        transactionRepository
+            .Setup(t => t.GetByIdAsync(It.IsAny<Guid>()))
+            .ReturnsAsync(transaction);
+
+        // Act
+        var response = await appService.UpdateAsync(request, idTransaction);
+
+        // Assert
+        response.Code.Should().Be(HttpStatusCode.Unauthorized);
+    }
+
 
 
 
@@ -328,6 +375,12 @@ public class TransactionAppServiceTests
     {
         // Arrange
         var idTransaction = Guid.NewGuid();
+        var cashFlow = CashFlowBuilder.New().WithReleaseDate(DateTime.Now.DateOnly()).Build();
+        var transaction = TransactionBuilder.New().WithCashFlow(cashFlow).Build();
+
+        transactionRepository
+            .Setup(t => t.GetByIdAsync(It.IsAny<Guid>()))
+            .ReturnsAsync(transaction);
 
         // Act
         var response = await appService.DeleteAsync(idTransaction);
@@ -345,6 +398,12 @@ public class TransactionAppServiceTests
     {
         // Arrange
         var idTransaction = Guid.NewGuid();
+        var cashFlow = CashFlowBuilder.New().WithReleaseDate(DateTime.Now.DateOnly()).Build();
+        var transaction = TransactionBuilder.New().WithCashFlow(cashFlow).Build();
+
+        transactionRepository
+            .Setup(t => t.GetByIdAsync(It.IsAny<Guid>()))
+            .ReturnsAsync(transaction);
         transactionService
             .Setup(u => u.DeleteAsync(It.IsAny<Guid>()))
             .ThrowsAsync(new Exception());
@@ -354,5 +413,39 @@ public class TransactionAppServiceTests
 
         // Assert
         response.Code.Should().Be(HttpStatusCode.InternalServerError);
+    }
+
+    [Fact(DisplayName = "Should Return NotFound When Deleting Non-Existent Transaction")]
+    [Trait(nameof(TransactionAppService), nameof(TransactionAppService.DeleteAsync))]
+    public async Task ShouldReturnNotFoundWhenDeletingNonExistentTransaction()
+    {
+        // Arrange
+        var idTransaction = Guid.NewGuid();
+
+        // Act
+        var response = await appService.DeleteAsync(idTransaction);
+
+        // Assert
+        response.Code.Should().Be(HttpStatusCode.NotFound);
+    }
+
+    [Fact(DisplayName = "Should Return Unauthorized When Deleting Past Transaction")]
+    [Trait(nameof(TransactionAppService), nameof(TransactionAppService.DeleteAsync))]
+    public async Task ShouldReturnUnauthorizedDeletingPastTransaction()
+    {
+        // Arrange
+        var idTransaction = Guid.NewGuid();
+        var cashFlow = CashFlowBuilder.New().WithReleaseDate(faker.Date.PastDateOnly()).Build();
+        var transaction = TransactionBuilder.New().WithCashFlow(cashFlow).Build();
+
+        transactionRepository
+            .Setup(t => t.GetByIdAsync(It.IsAny<Guid>()))
+            .ReturnsAsync(transaction);
+
+        // Act
+        var response = await appService.DeleteAsync(idTransaction);
+
+        // Assert
+        response.Code.Should().Be(HttpStatusCode.Unauthorized);
     }
 }

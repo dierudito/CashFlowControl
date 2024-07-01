@@ -68,6 +68,12 @@ public class CategoryAppService(
                 return new(false, HttpStatusCode.BadRequest, "Não foi possível identificar os dados da requisição");
             }
 
+            if (!await categoryRepository.AreThereAsync(entity => entity.Id == idCategory))
+            {
+                logger.LogInformation("Categoria {CodCategory} não encontrada", idCategory.ToString());
+                return new(false, HttpStatusCode.BadRequest, "Categoria não encontrada");
+            }
+
             logger.LogInformation("Atualizando a categoria {CodCategory} na base de dados", idCategory.ToString());
 
             var categoryDb = await categoryService.UpdateAsync(category, idCategory);
@@ -95,6 +101,12 @@ public class CategoryAppService(
         try
         {
             logger.LogInformation("Inicio do processo de exclusão da categoria {CodCategory}", idCategory.ToString());
+
+            if (!await categoryRepository.AreThereAsync(entity => entity.Id == idCategory))
+            {
+                logger.LogInformation("Categoria {CodCategory} não encontrada", idCategory.ToString());
+                return new(false, HttpStatusCode.BadRequest, "Categoria não encontrada");
+            }
 
             if (await transactionRepository.AreThereAsync(entity => entity.CategoryId == idCategory))
             {

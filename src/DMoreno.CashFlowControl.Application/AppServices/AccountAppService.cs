@@ -68,6 +68,12 @@ public class AccountAppService(
                 return new(false, HttpStatusCode.BadRequest, "Não foi possível identificar os dados da requisição");
             }
 
+            if (!await accountRepository.AreThereAsync(entity => entity.Id == idAccount))
+            {
+                logger.LogInformation("Conta {CodAccount} não encontrada", idAccount.ToString());
+                return new(false, HttpStatusCode.BadRequest, "Conta não encontrada");
+            }
+
             logger.LogInformation("Atualizando a conta {CodAccount} na base de dados", idAccount.ToString());
             var accountUpdated = await accountService.UpdateAsync(account, idAccount);
 
@@ -94,6 +100,12 @@ public class AccountAppService(
         try
         {
             logger.LogInformation("Inicio do processo de exclusão da conta {CodAccount}", idAccount.ToString());
+
+            if (!await accountRepository.AreThereAsync(entity => entity.Id == idAccount))
+            {
+                logger.LogInformation("Conta {CodAccount} não encontrada", idAccount.ToString());
+                return new(false, HttpStatusCode.BadRequest, "Conta não encontrada");
+            }
 
             if (await transactionRepository.AreThereAsync(entity => entity.AccountId == idAccount))
             {

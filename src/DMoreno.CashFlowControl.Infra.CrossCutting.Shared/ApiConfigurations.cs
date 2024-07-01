@@ -10,8 +10,10 @@ public static class ApiConfigurations
     public const string RouteTransaction = "transactions";
     public const string RouteCategory = "categories";
     public const string RouteAccount = "accounts";
+    public const string RouteConsolidated = "consolidated";
+    public const int MaxLengthPeriodDays = 31;
     public static string ConncetionString { get; set; } = string.Empty;
     public static string CorsPolicyName => "corsdodiegomoreno";
     public static string BackendUrl { get; set; } = string.Empty;
-    public static string FrontendUrl { get; set; } = string.Empty;
+    public static string FrontendUrl { get; set; } = string.Empty;    
 }

@@ -39,7 +39,7 @@ public class TransactionServiceTests
         entity.Id == transaction.Id &&
         entity.Type == transaction.Type &&
         entity.Amount == transaction.Amount &&
-        entity.Date == transaction.Date)), Times.Once());
+        entity.CashFlowId == transaction.CashFlowId)), Times.Once());
     }
 
     [Fact(DisplayName = "Should Update Transaction Successfully")]
@@ -63,7 +63,7 @@ public class TransactionServiceTests
         entity.Id == transaction.Id &&
         entity.Type == transaction.Type &&
         entity.Amount == transaction.Amount &&
-        entity.Date == transaction.Date), idTransaction), Times.Once());
+        entity.CashFlowId == transaction.CashFlowId), idTransaction), Times.Once());
     }
 
     [Fact(DisplayName = "Should Delete Transaction Successfully")]

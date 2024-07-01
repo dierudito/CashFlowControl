@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.Internal;
 using Bogus;
 using DMoreno.CashFlowControl.Application.AppServices;
 using DMoreno.CashFlowControl.Application.ViewModels.Requests;
@@ -167,6 +168,9 @@ public class CategoryAppServiceTests
 
         var request = new CategoryRequestViewModel(faker.Lorem.Word(), faker.Lorem.Text());
         var category = new Category { Description = request.Description, Name = request.Name, Id = idCategory };
+        categoryRepository
+            .Setup(a => a.AreThereAsync(It.IsAny<Expression<Func<Category, bool>>>()))
+            .ReturnsAsync(true);
 
         categoryService
             .Setup(t => t.UpdateAsync(It.IsAny<Category>(), It.IsAny<Guid>()))
@@ -196,6 +200,9 @@ public class CategoryAppServiceTests
         var idCategory = Guid.NewGuid();
         var request = new CategoryRequestViewModel(faker.Lorem.Word(), faker.Lorem.Text());
         var category = new Category { Description = request.Description, Name = request.Name, Id = idCategory };
+        categoryRepository
+            .Setup(a => a.AreThereAsync(It.IsAny<Expression<Func<Category, bool>>>()))
+            .ReturnsAsync(true);
 
         mapper
             .Setup(m => m.Map<Category>(It.IsAny<CategoryRequestViewModel>()))
@@ -246,6 +253,9 @@ public class CategoryAppServiceTests
         var idCategory = Guid.NewGuid();
         var request = new CategoryRequestViewModel(faker.Lorem.Word(), faker.Lorem.Text());
         var category = new Category { Description = request.Description, Name = request.Name, Id = idCategory };
+        categoryRepository
+            .Setup(a => a.AreThereAsync(It.IsAny<Expression<Func<Category, bool>>>()))
+            .ReturnsAsync(true);
 
         mapper
             .Setup(m => m.Map<Category>(It.IsAny<CategoryRequestViewModel>()))
@@ -259,6 +269,25 @@ public class CategoryAppServiceTests
 
         // Assert
         response.Code.Should().Be(HttpStatusCode.InternalServerError);
+    }
+
+    [Fact(DisplayName = "Should Return BadRequest When Update a Non-Existent Category")]
+    [Trait(nameof(CategoryAppService), nameof(CategoryAppService.UpdateAsync))]
+    public async Task ShouldReturnBadRequestWhenUpdateNonExistentCategory()
+    {
+        // Arrange
+        var idCategory = Guid.NewGuid();
+
+        var request = new CategoryRequestViewModel(faker.Lorem.Word(), faker.Lorem.Text());
+        categoryRepository
+            .Setup(a => a.AreThereAsync(It.IsAny<Expression<Func<Category, bool>>>()))
+            .ReturnsAsync(false);
+
+        // Act
+        var response = await appService.UpdateAsync(request, idCategory);
+
+        // Assert
+        response.Code.Should().Be(HttpStatusCode.BadRequest);
     }
 
 
@@ -276,6 +305,9 @@ public class CategoryAppServiceTests
     {
         // Arrange
         var idCategory = Guid.NewGuid();
+        categoryRepository
+            .Setup(a => a.AreThereAsync(It.IsAny<Expression<Func<Category, bool>>>()))
+            .ReturnsAsync(true);
 
         // Act
         var response = await appService.DeleteAsync(idCategory);
@@ -293,6 +325,9 @@ public class CategoryAppServiceTests
     {
         // Arrange
         var idCategory = Guid.NewGuid();
+        categoryRepository
+            .Setup(a => a.AreThereAsync(It.IsAny<Expression<Func<Category, bool>>>()))
+            .ReturnsAsync(true);
 
         categoryService
             .Setup(u => u.DeleteAsync(It.IsAny<Guid>()))
@@ -311,6 +346,9 @@ public class CategoryAppServiceTests
     {
         // Arrange
         var idCategory = Guid.NewGuid();
+        categoryRepository
+            .Setup(a => a.AreThereAsync(It.IsAny<Expression<Func<Category, bool>>>()))
+            .ReturnsAsync(true);
 
         transactionRepository
             .Setup(t => t.AreThereAsync(It.IsAny<Expression<Func<Transaction, bool>>>()))

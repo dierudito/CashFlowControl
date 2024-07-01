@@ -168,6 +168,9 @@ public class AccountAppServiceTests
         var request = new AccountRequestViewModel(faker.Lorem.Word(), faker.Lorem.Text());
         var account = new Account { Description = request.Description, Name = request.Name, Id = idAccount };
 
+        accountRepository
+            .Setup(a => a.AreThereAsync(It.IsAny<Expression<Func<Account, bool>>>()))
+            .ReturnsAsync(true);
         accountService
             .Setup(t => t.UpdateAsync(It.IsAny<Account>(), It.IsAny<Guid>()))
             .ReturnsAsync(account);
@@ -197,6 +200,9 @@ public class AccountAppServiceTests
         var request = new AccountRequestViewModel(faker.Lorem.Word(), faker.Lorem.Text());
         var account = new Account { Description = request.Description, Name = request.Name, Id = idAccount };
 
+        accountRepository
+            .Setup(a => a.AreThereAsync(It.IsAny<Expression<Func<Account, bool>>>()))
+            .ReturnsAsync(true);
         mapper
             .Setup(m => m.Map<Account>(It.IsAny<AccountRequestViewModel>()))
             .Returns(account);
@@ -249,6 +255,9 @@ public class AccountAppServiceTests
         var request = new AccountRequestViewModel(faker.Lorem.Word(), faker.Lorem.Text());
         var account = new Account { Description = request.Description, Name = request.Name, Id = idAccount };
 
+        accountRepository
+            .Setup(a => a.AreThereAsync(It.IsAny<Expression<Func<Account, bool>>>()))
+            .ReturnsAsync(true);
         mapper
             .Setup(m => m.Map<Account>(It.IsAny<AccountRequestViewModel>()))
             .Returns(account);
@@ -261,6 +270,25 @@ public class AccountAppServiceTests
 
         // Assert
         response.Code.Should().Be(HttpStatusCode.InternalServerError);
+    }
+
+    [Fact(DisplayName = "Should Return BadRequest When Update a Non-Existent Account")]
+    [Trait(nameof(AccountAppService), nameof(AccountAppService.UpdateAsync))]
+    public async Task ShouldReturnBadRequestWhenUpdateNonExistentAccount()
+    {
+        // Arrange
+        var idAccount = Guid.NewGuid();
+
+        var request = new AccountRequestViewModel(faker.Lorem.Word(), faker.Lorem.Text());
+        accountRepository
+            .Setup(a => a.AreThereAsync(It.IsAny<Expression<Func<Account, bool>>>()))
+            .ReturnsAsync(false);
+
+        // Act
+        var response = await appService.UpdateAsync(request, idAccount);
+
+        // Assert
+        response.Code.Should().Be(HttpStatusCode.BadRequest);
     }
 
 
@@ -278,6 +306,9 @@ public class AccountAppServiceTests
     {
         // Arrange
         var idAccount = Guid.NewGuid();
+        accountRepository
+            .Setup(a => a.AreThereAsync(It.IsAny<Expression<Func<Account, bool>>>()))
+            .ReturnsAsync(true);
 
         // Act
         var response = await appService.DeleteAsync(idAccount);
@@ -295,11 +326,10 @@ public class AccountAppServiceTests
     {
         // Arrange
         var idAccount = Guid.NewGuid();
-        var account = new Account { Description = faker.Lorem.Text(), Name = faker.Lorem.Word() };
-
         accountRepository
-            .Setup(t => t.GetByIdAsync(It.IsAny<Guid>()))
-            .ReturnsAsync(account);
+            .Setup(a => a.AreThereAsync(It.IsAny<Expression<Func<Account, bool>>>()))
+            .ReturnsAsync(true);
+
         accountService
             .Setup(u => u.DeleteAsync(It.IsAny<Guid>()))
             .ThrowsAsync(new Exception());
@@ -317,6 +347,9 @@ public class AccountAppServiceTests
     {
         // Arrange
         var idAccount = Guid.NewGuid();
+        accountRepository
+            .Setup(a => a.AreThereAsync(It.IsAny<Expression<Func<Account, bool>>>()))
+            .ReturnsAsync(true);
 
         transactionRepository
             .Setup(t => t.AreThereAsync(It.IsAny<Expression<Func<Transaction, bool>>>()))

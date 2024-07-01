@@ -11,7 +11,6 @@ public class TransactionMap : IEntityTypeConfiguration<Transaction>
         builder.ToTable("Transactions");
         builder.HasKey(t => t.Id);
 
-        builder.Property(t => t.Date).IsRequired(true);
         builder.Property(t => t.Type).IsRequired(true);
         builder.Property(t => t.Amount).HasColumnType("money").IsRequired(true);
         builder.Property(t => t.AccountId).IsRequired(false);
@@ -32,5 +31,11 @@ public class TransactionMap : IEntityTypeConfiguration<Transaction>
             .WithMany()
             .HasForeignKey(t => t.CategoryId)
             .IsRequired(false);
+
+        builder
+            .HasOne(t => t.CashFlow)
+            .WithMany()
+            .HasForeignKey(t => t.CashFlowId)
+            .IsRequired(true);
     }
 }

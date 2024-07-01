@@ -1,5 +1,6 @@
 ﻿using DMoreno.CashFlowControl.bff.Endpoints.Accounts;
 using DMoreno.CashFlowControl.bff.Endpoints.Categories;
+using DMoreno.CashFlowControl.bff.Endpoints.Consolidated;
 using DMoreno.CashFlowControl.bff.Endpoints.Transactions;
 using DMoreno.CashFlowControl.bff.Extensions;
 using DMoreno.CashFlowControl.Infra.CrossCutting.Shared;
@@ -39,6 +40,10 @@ public static class Endpoint
             .MapEndpoint<GetAllAccountEndpoint>()
             .MapEndpoint<GetByIdAccountEndpoint>()
             .MapEndpoint<DeleteAccountEndpoint>();
+
+        endpoints.MapGroup($"v1/{ApiConfigurations.RouteConsolidated}")
+            .WithTags("Consolidated")
+            .MapEndpoint<GetConsolidatedByPeriodEndpoint>();
     }
 
     private static IEndpointRouteBuilder MapEndpoint<TEndpoint>(this IEndpointRouteBuilder app)

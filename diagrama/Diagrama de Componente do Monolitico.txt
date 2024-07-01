@@ -1,0 +1,15 @@
++-------------------+
+|    CashFlowApi    |
++-------------------+
+| - Web Api         |
+| - Controllers     |
+| - Services        |
+| - Domain          |
+| - Repositories    |
+| - DbContext       |
++-------------------+
+     |
+     |
++-----------+
+| Database  |
++-----------+
