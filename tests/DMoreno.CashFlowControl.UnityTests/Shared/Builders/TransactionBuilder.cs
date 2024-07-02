@@ -12,6 +12,8 @@ public class TransactionBuilder
     public string? Description { get; private set; }
     public Guid? CategoryId { get; private set; }
     public Guid? AccountId { get; private set; }
+    public Guid CashFlowId { get; private set; }
+    public CashFlow CashFlow { get; private set; }
 
 
     public TransactionBuilder()
@@ -25,6 +27,8 @@ public class TransactionBuilder
         WithDescription(faker.Lorem.Paragraph());
         WithCategoryId(Guid.NewGuid());
         WithAccountId(Guid.NewGuid());
+        WithCashFlowId(Guid.NewGuid());
+        WithCashFlow(CashFlowBuilder.New().Build());
     }
 
     public TransactionBuilder WithId(Guid id)
@@ -68,16 +72,29 @@ public class TransactionBuilder
         return this;
     }
 
+    public TransactionBuilder WithCashFlowId(Guid cashFlowId)
+    {
+        CashFlowId = cashFlowId;
+        return this;
+    }
+
+    public TransactionBuilder WithCashFlow(CashFlow cashFlow)
+    {
+        CashFlow = cashFlow;
+        return this;
+    }
+
     public static TransactionBuilder New() => new();
 
     public Transaction Build() => new()
     {
         Id = Id,
-        Date = Date,
         Type = Type,
         Amount = Amount,
         Description = Description,
         CategoryId = CategoryId,
-        AccountId = AccountId
+        AccountId = AccountId,
+        CashFlowId = CashFlowId,
+        CashFlow = CashFlow
     };
 }

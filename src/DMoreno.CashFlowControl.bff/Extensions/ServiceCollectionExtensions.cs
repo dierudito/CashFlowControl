@@ -18,7 +18,10 @@ public static class ServiceCollectionExtension
 
     private static IServiceCollection AddAppServices(this IServiceCollection services) =>
         services
-        .AddTransient<ITransactionAppService, TransactionAppService>();
+        .AddTransient<ITransactionAppService, TransactionAppService>()
+        .AddTransient<IAccountAppService, AccountAppService>()
+        .AddTransient<ICategoryAppService, CategoryAppService>()
+        .AddTransient<IDailyConsolidatedBalanceAppService, DailyConsolidatedBalanceAppService>();
 
     public static IServiceCollection AddDocumentation(this IServiceCollection services) =>
         services

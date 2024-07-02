@@ -8,7 +8,6 @@ public class GetTransactionByIdResponseViewModelBuilder
 {
     public Guid Id { get; private set; }
     public string Date { get; private set; } = null!;
-    public ETransactionTypeViewModel Type { get; private set; }
     public string Amount { get; private set; } = null!;
     public string? Description { get; private set; }
     public Guid? CategoryId { get; private set; }
@@ -20,7 +19,6 @@ public class GetTransactionByIdResponseViewModelBuilder
 
         WithId(Guid.NewGuid());
         WithDate(faker.Date.Recent());
-        WithType(faker.PickRandom<ETransactionTypeViewModel>());
         WithAmount(faker.Finance.Amount());
         WithDescription(faker.Lorem.Paragraph());
         WithCategoryId(Guid.NewGuid());
@@ -36,12 +34,6 @@ public class GetTransactionByIdResponseViewModelBuilder
     public GetTransactionByIdResponseViewModelBuilder WithDate(DateTime date)
     {
         Date = date.ToString("dd/MM/yyyy HH:mm");
-        return this;
-    }
-
-    public GetTransactionByIdResponseViewModelBuilder WithType(ETransactionTypeViewModel type)
-    {
-        Type = type;
         return this;
     }
 
@@ -75,7 +67,6 @@ public class GetTransactionByIdResponseViewModelBuilder
     public GetTransactionByIdResponseViewModel Build() => new(
         Id,
         Date,
-        Type,
         Amount,
         Description,
         CategoryId,

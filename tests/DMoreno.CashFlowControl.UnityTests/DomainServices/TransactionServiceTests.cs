@@ -5,11 +5,6 @@ using DMoreno.CashFlowControl.UnityTests.Shared.Builders;
 using FluentAssertions;
 using Moq;
 using Moq.AutoMock;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DMoreno.CashFlowControl.UnityTests.DomainServices;
 public class TransactionServiceTests
@@ -44,7 +39,7 @@ public class TransactionServiceTests
         entity.Id == transaction.Id &&
         entity.Type == transaction.Type &&
         entity.Amount == transaction.Amount &&
-        entity.Date == transaction.Date)), Times.Once());
+        entity.CashFlowId == transaction.CashFlowId)), Times.Once());
     }
 
     [Fact(DisplayName = "Should Update Transaction Successfully")]
@@ -53,13 +48,14 @@ public class TransactionServiceTests
     {
         // Arrange
         var transaction = TransactionBuilder.New().Build();
+        var idTransaction = Guid.NewGuid();
 
         transactionRepository
-            .Setup(t => t.UpdateAsync(It.IsAny<Transaction>()))
+            .Setup(t => t.UpdateAsync(It.IsAny<Transaction>(), It.IsAny<Guid>()))
             .ReturnsAsync(transaction);
 
         // Act
-        var response = await service.UpdateAsync(transaction);
+        var response = await service.UpdateAsync(transaction, idTransaction);
 
         // Assert
         response.Should().BeEquivalentTo(transaction);
@@ -67,7 +63,7 @@ public class TransactionServiceTests
         entity.Id == transaction.Id &&
         entity.Type == transaction.Type &&
         entity.Amount == transaction.Amount &&
-        entity.Date == transaction.Date)), Times.Once());
+        entity.CashFlowId == transaction.CashFlowId), idTransaction), Times.Once());
     }
 
     [Fact(DisplayName = "Should Delete Transaction Successfully")]

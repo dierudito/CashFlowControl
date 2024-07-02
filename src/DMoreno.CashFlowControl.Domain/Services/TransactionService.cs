@@ -9,8 +9,8 @@ public class TransactionService(ITransactionRepository transactionRepository) : 
     public async Task<Transaction> AddAsync(Transaction transaction) =>
         await transactionRepository.AddAsync(transaction);
 
-    public async Task<Transaction> UpdateAsync(Transaction transaction) =>
-        await transactionRepository.UpdateAsync(transaction);
+    public async Task<Transaction?> UpdateAsync(Transaction transaction, Guid idTransaction) =>
+        await transactionRepository.UpdateAsync(transaction, idTransaction);
 
     public async Task DeleteAsync(Guid id) =>
         await transactionRepository.DeleteAsync(id);

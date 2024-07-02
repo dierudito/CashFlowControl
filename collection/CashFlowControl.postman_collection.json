@@ -1,0 +1,472 @@
+{
+	"info": {
+		"_postman_id": "6c70ce5f-2399-43d4-88e7-c7cb72686aa2",
+		"name": "CashFlowControl",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5438181"
+	},
+	"item": [
+		{
+			"name": "Conta",
+			"item": [
+				{
+					"name": "Criar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Bank Of Latin Associate\",\n  \"description\": \"Conta onde estão os lançamentos xyz\"\n}"
+						},
+						"url": {
+							"raw": "https://localhost:7201/v1/accounts",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7201",
+							"path": [
+								"v1",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter Todos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:7201/v1/accounts",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7201",
+							"path": [
+								"v1",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Bank Of Latin Associate\",\n  \"description\": \"Conta onde estão os lançamentos xyz das movimentações nacionais e da argentina\"\n}"
+						},
+						"url": {
+							"raw": "https://localhost:7201/v1/accounts/d7bba9d1-3c7c-41c6-96d9-69a543ce7a1e",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7201",
+							"path": [
+								"v1",
+								"accounts",
+								"d7bba9d1-3c7c-41c6-96d9-69a543ce7a1e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter unico por id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:7201/v1/accounts/d7bba9d1-3c7c-41c6-96d9-69a543ce7a1e",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7201",
+							"path": [
+								"v1",
+								"accounts",
+								"d7bba9d1-3c7c-41c6-96d9-69a543ce7a1e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:7201/v1/accounts/d7bba9d1-3c7c-41c6-96d9-69a543ce7a1e",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7201",
+							"path": [
+								"v1",
+								"accounts",
+								"d7bba9d1-3c7c-41c6-96d9-69a543ce7a1e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categoria",
+			"item": [
+				{
+					"name": "Criar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"PIX\",\n  \"description\": \"Do Pix\"\n}"
+						},
+						"url": {
+							"raw": "https://localhost:7201/v1/categories",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7201",
+							"path": [
+								"v1",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter Todos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:7201/v1/categories",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7201",
+							"path": [
+								"v1",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Pix\",\n  \"description\": \"Lançamento realizados através da modalidade de transferência estantânea (pix)\"\n}"
+						},
+						"url": {
+							"raw": "https://localhost:7201/v1/categories/b0a9aac8-379f-4c5d-b84a-592122952dc7",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7201",
+							"path": [
+								"v1",
+								"categories",
+								"b0a9aac8-379f-4c5d-b84a-592122952dc7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter unico por id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:7201/v1/categories/b0a9aac8-379f-4c5d-b84a-592122952dc7",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7201",
+							"path": [
+								"v1",
+								"categories",
+								"b0a9aac8-379f-4c5d-b84a-592122952dc7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:7201/v1/categories/b0a9aac8-379f-4c5d-b84a-592122952dc7",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7201",
+							"path": [
+								"v1",
+								"categories",
+								"b0a9aac8-379f-4c5d-b84a-592122952dc7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transacao",
+			"item": [
+				{
+					"name": "Criar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"amount\": -500,\n  \"description\": \"Café com leite 🎉\"\n}"
+						},
+						"url": {
+							"raw": "https://localhost:7201/v1/transactions",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7201",
+							"path": [
+								"v1",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"amount\": -5,\n  \"description\": \"Café com leite 🎉\",\n  \"categoryId\": \"abf50f21-7e4e-456a-9352-5bcb8ad97e01\",\n  \"accountId\": \"8c6db114-07d9-4bff-b21a-7ee0249d6a54\"\n}"
+						},
+						"url": {
+							"raw": "https://localhost:7201/v1/transactions/db6bdb02-dca4-43a0-a10e-365916b5add7",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7201",
+							"path": [
+								"v1",
+								"transactions",
+								"db6bdb02-dca4-43a0-a10e-365916b5add7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter unico por id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:7201/v1/transactions/db6bdb02-dca4-43a0-a10e-365916b5add7",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7201",
+							"path": [
+								"v1",
+								"transactions",
+								"db6bdb02-dca4-43a0-a10e-365916b5add7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:7201/v1/transactions/db6bdb02-dca4-43a0-a10e-365916b5add7",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7201",
+							"path": [
+								"v1",
+								"transactions",
+								"db6bdb02-dca4-43a0-a10e-365916b5add7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Consolidado",
+			"item": [
+				{
+					"name": "Obter por periodo",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:7201/v1/consolidated?startDate=2024-06-01&endDate=2024-07-01",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7201",
+							"path": [
+								"v1",
+								"consolidated"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2024-06-01"
+								},
+								{
+									"key": "endDate",
+									"value": "2024-07-01"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

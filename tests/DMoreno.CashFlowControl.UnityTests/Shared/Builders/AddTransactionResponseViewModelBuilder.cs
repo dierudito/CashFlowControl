@@ -7,8 +7,6 @@ namespace DMoreno.CashFlowControl.UnityTests.Shared.Builders;
 public class AddTransactionResponseViewModelBuilder
 {
     public Guid Id { get; private set; }
-    public string Date { get; private set; } = null!;
-    public ETransactionTypeViewModel Type { get; private set; }
     public string Amount { get; private set; } = null!;
     public string? Description { get; private set; }
 
@@ -17,8 +15,6 @@ public class AddTransactionResponseViewModelBuilder
         var faker = new Faker();
 
         WithId(Guid.NewGuid());
-        WithDate(faker.Date.Recent());
-        WithType(faker.PickRandom<ETransactionTypeViewModel>());
         WithAmount(faker.Finance.Amount());
         WithDescription(faker.Lorem.Paragraph());
     }
@@ -26,18 +22,6 @@ public class AddTransactionResponseViewModelBuilder
     public AddTransactionResponseViewModelBuilder WithId(Guid id)
     {
         Id = id;
-        return this;
-    }
-
-    public AddTransactionResponseViewModelBuilder WithDate(DateTime date)
-    {
-        Date = date.ToString("dd/MM/yyyy HH:mm");
-        return this;
-    }
-
-    public AddTransactionResponseViewModelBuilder WithType(ETransactionTypeViewModel type)
-    {
-        Type = type;
         return this;
     }
 
@@ -57,8 +41,6 @@ public class AddTransactionResponseViewModelBuilder
 
     public AddTransactionResponseViewModel Build() => new(
         Id,
-        Date,
-        Type,
         Amount,
         Description
     );
