@@ -2,12 +2,12 @@
 
 ### Descrição
 
-O CashFlowControl é uma API RESTful desenvolvida em C# .NET 9 para auxiliar comerciantes no controle de seu fluxo de caixa diário. A API permite o registro de transações (débitos e créditos) e fornece um relatório consolidado diário do saldo.
+O CashFlowControl é uma API RESTful desenvolvida em C# .NET 8 para auxiliar comerciantes no controle de seu fluxo de caixa diário. A API permite o registro de transações (débitos e créditos) e fornece um relatório consolidado diário do saldo.
 
 ### Pré-requisitos
 
 * **SQL Server:** Você precisará de um servidor SQL Server em execução para armazenar os dados.
-* **.NET 9 SDK:** Certifique-se de ter o .NET 9 SDK instalado em sua máquina. Você pode baixá-lo em: [https://dotnet.microsoft.com/pt-br/download/dotnet/9.0](https://dotnet.microsoft.com/pt-br/download/dotnet/9.0)
+* **.NET 8 SDK:** Certifique-se de ter o .NET 8 SDK instalado em sua máquina. Você pode baixá-lo em: [https://dotnet.microsoft.com/pt-br/download/dotnet/8.0](https://dotnet.microsoft.com/pt-br/download/dotnet/8.0)
 
 ### Configuração
 

@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DMoreno.CashFlowControl.bff
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DMoreno.CashFlowControl.UnityTests", "tests\DMoreno.CashFlowControl.UnityTests\DMoreno.CashFlowControl.UnityTests.csproj", "{97F59493-7F18-4232-8538-94C20BB99D8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMoreno.CashFlowControl.Infra.CrossCutting.Shared", "src\DMoreno.CashFlowControl.Infra.CrossCutting.Shared\DMoreno.CashFlowControl.Infra.CrossCutting.Shared.csproj", "{38BAACD1-64FA-420E-A1DC-90149336F0CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DMoreno.CashFlowControl.Infra.CrossCutting.Shared", "src\DMoreno.CashFlowControl.Infra.CrossCutting.Shared\DMoreno.CashFlowControl.Infra.CrossCutting.Shared.csproj", "{38BAACD1-64FA-420E-A1DC-90149336F0CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
