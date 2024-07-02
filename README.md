@@ -55,3 +55,5 @@ Você tem duas opções para interagir com a API:
 **Contribuindo:**
 
 Contribuições são bem-vindas! Se você encontrar algum problema ou tiver sugestões de melhoria, por favor, abra uma issue ou envie um pull request.
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5ec8b167-fcdf-43b0-b48f-714c02bf3424/deploy-status)](https://app.netlify.com/sites/morenocashflowcontrol/deploys)
