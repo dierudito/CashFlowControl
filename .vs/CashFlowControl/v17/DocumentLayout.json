@@ -1,0 +1,211 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Developer\\CashFlowControl\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F315F85D-D6A0-4BE8-84A0-4F7C92867701}|src\\DMoreno.CashFlowControl.bff\\DMoreno.CashFlowControl.bff.csproj|c:\\developer\\cashflowcontrol\\src\\dmoreno.cashflowcontrol.bff\\endpoints\\transactions\\updatetransactionendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F315F85D-D6A0-4BE8-84A0-4F7C92867701}|src\\DMoreno.CashFlowControl.bff\\DMoreno.CashFlowControl.bff.csproj|solutionrelative:src\\dmoreno.cashflowcontrol.bff\\endpoints\\transactions\\updatetransactionendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F315F85D-D6A0-4BE8-84A0-4F7C92867701}|src\\DMoreno.CashFlowControl.bff\\DMoreno.CashFlowControl.bff.csproj|c:\\developer\\cashflowcontrol\\src\\dmoreno.cashflowcontrol.bff\\endpoints\\transactions\\gettransactionbyidendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F315F85D-D6A0-4BE8-84A0-4F7C92867701}|src\\DMoreno.CashFlowControl.bff\\DMoreno.CashFlowControl.bff.csproj|solutionrelative:src\\dmoreno.cashflowcontrol.bff\\endpoints\\transactions\\gettransactionbyidendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F315F85D-D6A0-4BE8-84A0-4F7C92867701}|src\\DMoreno.CashFlowControl.bff\\DMoreno.CashFlowControl.bff.csproj|c:\\developer\\cashflowcontrol\\src\\dmoreno.cashflowcontrol.bff\\endpoints\\transactions\\deletetransactionendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F315F85D-D6A0-4BE8-84A0-4F7C92867701}|src\\DMoreno.CashFlowControl.bff\\DMoreno.CashFlowControl.bff.csproj|solutionrelative:src\\dmoreno.cashflowcontrol.bff\\endpoints\\transactions\\deletetransactionendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F315F85D-D6A0-4BE8-84A0-4F7C92867701}|src\\DMoreno.CashFlowControl.bff\\DMoreno.CashFlowControl.bff.csproj|c:\\developer\\cashflowcontrol\\src\\dmoreno.cashflowcontrol.bff\\endpoints\\transactions\\createtransactionendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F315F85D-D6A0-4BE8-84A0-4F7C92867701}|src\\DMoreno.CashFlowControl.bff\\DMoreno.CashFlowControl.bff.csproj|solutionrelative:src\\dmoreno.cashflowcontrol.bff\\endpoints\\transactions\\createtransactionendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F315F85D-D6A0-4BE8-84A0-4F7C92867701}|src\\DMoreno.CashFlowControl.bff\\DMoreno.CashFlowControl.bff.csproj|c:\\developer\\cashflowcontrol\\src\\dmoreno.cashflowcontrol.bff\\extensions\\responseresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F315F85D-D6A0-4BE8-84A0-4F7C92867701}|src\\DMoreno.CashFlowControl.bff\\DMoreno.CashFlowControl.bff.csproj|solutionrelative:src\\dmoreno.cashflowcontrol.bff\\extensions\\responseresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2A7AEC74-EC00-432F-884F-78D6BCC01146}|src\\DMoreno.CashFlowControl.Application\\DMoreno.CashFlowControl.Application.csproj|c:\\developer\\cashflowcontrol\\src\\dmoreno.cashflowcontrol.application\\appservices\\transactionappservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2A7AEC74-EC00-432F-884F-78D6BCC01146}|src\\DMoreno.CashFlowControl.Application\\DMoreno.CashFlowControl.Application.csproj|solutionrelative:src\\dmoreno.cashflowcontrol.application\\appservices\\transactionappservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F315F85D-D6A0-4BE8-84A0-4F7C92867701}|src\\DMoreno.CashFlowControl.bff\\DMoreno.CashFlowControl.bff.csproj|c:\\developer\\cashflowcontrol\\src\\dmoreno.cashflowcontrol.bff\\endpoints\\endpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F315F85D-D6A0-4BE8-84A0-4F7C92867701}|src\\DMoreno.CashFlowControl.bff\\DMoreno.CashFlowControl.bff.csproj|solutionrelative:src\\dmoreno.cashflowcontrol.bff\\endpoints\\endpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97F59493-7F18-4232-8538-94C20BB99D8F}|tests\\DMoreno.CashFlowControl.UnityTests\\DMoreno.CashFlowControl.UnityTests.csproj|c:\\developer\\cashflowcontrol\\tests\\dmoreno.cashflowcontrol.unitytests\\appservices\\transactionappservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97F59493-7F18-4232-8538-94C20BB99D8F}|tests\\DMoreno.CashFlowControl.UnityTests\\DMoreno.CashFlowControl.UnityTests.csproj|solutionrelative:tests\\dmoreno.cashflowcontrol.unitytests\\appservices\\transactionappservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97F59493-7F18-4232-8538-94C20BB99D8F}|tests\\DMoreno.CashFlowControl.UnityTests\\DMoreno.CashFlowControl.UnityTests.csproj|c:\\developer\\cashflowcontrol\\tests\\dmoreno.cashflowcontrol.unitytests\\shared\\builders\\updatetransactionrequestviewmodelbuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97F59493-7F18-4232-8538-94C20BB99D8F}|tests\\DMoreno.CashFlowControl.UnityTests\\DMoreno.CashFlowControl.UnityTests.csproj|solutionrelative:tests\\dmoreno.cashflowcontrol.unitytests\\shared\\builders\\updatetransactionrequestviewmodelbuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2A7AEC74-EC00-432F-884F-78D6BCC01146}|src\\DMoreno.CashFlowControl.Application\\DMoreno.CashFlowControl.Application.csproj|c:\\developer\\cashflowcontrol\\src\\dmoreno.cashflowcontrol.application\\viewmodels\\requests\\updatetransactionrequestviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2A7AEC74-EC00-432F-884F-78D6BCC01146}|src\\DMoreno.CashFlowControl.Application\\DMoreno.CashFlowControl.Application.csproj|solutionrelative:src\\dmoreno.cashflowcontrol.application\\viewmodels\\requests\\updatetransactionrequestviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2A7AEC74-EC00-432F-884F-78D6BCC01146}|src\\DMoreno.CashFlowControl.Application\\DMoreno.CashFlowControl.Application.csproj|c:\\developer\\cashflowcontrol\\src\\dmoreno.cashflowcontrol.application\\viewmodels\\requests\\addtransactionrequestviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2A7AEC74-EC00-432F-884F-78D6BCC01146}|src\\DMoreno.CashFlowControl.Application\\DMoreno.CashFlowControl.Application.csproj|solutionrelative:src\\dmoreno.cashflowcontrol.application\\viewmodels\\requests\\addtransactionrequestviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GetTransactionByIdEndpoint.cs",
+              "DocumentMoniker": "C:\\Developer\\CashFlowControl\\src\\DMoreno.CashFlowControl.bff\\Endpoints\\Transactions\\GetTransactionByIdEndpoint.cs",
+              "RelativeDocumentMoniker": "src\\DMoreno.CashFlowControl.bff\\Endpoints\\Transactions\\GetTransactionByIdEndpoint.cs",
+              "ToolTip": "C:\\Developer\\CashFlowControl\\src\\DMoreno.CashFlowControl.bff\\Endpoints\\Transactions\\GetTransactionByIdEndpoint.cs*",
+              "RelativeToolTip": "src\\DMoreno.CashFlowControl.bff\\Endpoints\\Transactions\\GetTransactionByIdEndpoint.cs*",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAABcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-30T18:12:23.529Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e506b91c-c606-466a-90a9-123d1d1e12b3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DeleteTransactionEndpoint.cs",
+              "DocumentMoniker": "C:\\Developer\\CashFlowControl\\src\\DMoreno.CashFlowControl.bff\\Endpoints\\Transactions\\DeleteTransactionEndpoint.cs",
+              "RelativeDocumentMoniker": "src\\DMoreno.CashFlowControl.bff\\Endpoints\\Transactions\\DeleteTransactionEndpoint.cs",
+              "ToolTip": "C:\\Developer\\CashFlowControl\\src\\DMoreno.CashFlowControl.bff\\Endpoints\\Transactions\\DeleteTransactionEndpoint.cs",
+              "RelativeToolTip": "src\\DMoreno.CashFlowControl.bff\\Endpoints\\Transactions\\DeleteTransactionEndpoint.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-30T18:10:16.95Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ResponseResult.cs",
+              "DocumentMoniker": "C:\\Developer\\CashFlowControl\\src\\DMoreno.CashFlowControl.bff\\Extensions\\ResponseResult.cs",
+              "RelativeDocumentMoniker": "src\\DMoreno.CashFlowControl.bff\\Extensions\\ResponseResult.cs",
+              "ToolTip": "C:\\Developer\\CashFlowControl\\src\\DMoreno.CashFlowControl.bff\\Extensions\\ResponseResult.cs",
+              "RelativeToolTip": "src\\DMoreno.CashFlowControl.bff\\Extensions\\ResponseResult.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-30T17:55:40.2Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CreateTransactionEndpoint.cs",
+              "DocumentMoniker": "C:\\Developer\\CashFlowControl\\src\\DMoreno.CashFlowControl.bff\\Endpoints\\Transactions\\CreateTransactionEndpoint.cs",
+              "RelativeDocumentMoniker": "src\\DMoreno.CashFlowControl.bff\\Endpoints\\Transactions\\CreateTransactionEndpoint.cs",
+              "ToolTip": "C:\\Developer\\CashFlowControl\\src\\DMoreno.CashFlowControl.bff\\Endpoints\\Transactions\\CreateTransactionEndpoint.cs",
+              "RelativeToolTip": "src\\DMoreno.CashFlowControl.bff\\Endpoints\\Transactions\\CreateTransactionEndpoint.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAvwBQAAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-30T17:39:13.514Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Endpoint.cs",
+              "DocumentMoniker": "C:\\Developer\\CashFlowControl\\src\\DMoreno.CashFlowControl.bff\\Endpoints\\Endpoint.cs",
+              "RelativeDocumentMoniker": "src\\DMoreno.CashFlowControl.bff\\Endpoints\\Endpoint.cs",
+              "ToolTip": "C:\\Developer\\CashFlowControl\\src\\DMoreno.CashFlowControl.bff\\Endpoints\\Endpoint.cs",
+              "RelativeToolTip": "src\\DMoreno.CashFlowControl.bff\\Endpoints\\Endpoint.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-30T17:21:11.649Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UpdateTransactionEndpoint.cs",
+              "DocumentMoniker": "C:\\Developer\\CashFlowControl\\src\\DMoreno.CashFlowControl.bff\\Endpoints\\Transactions\\UpdateTransactionEndpoint.cs",
+              "RelativeDocumentMoniker": "src\\DMoreno.CashFlowControl.bff\\Endpoints\\Transactions\\UpdateTransactionEndpoint.cs",
+              "ToolTip": "C:\\Developer\\CashFlowControl\\src\\DMoreno.CashFlowControl.bff\\Endpoints\\Transactions\\UpdateTransactionEndpoint.cs",
+              "RelativeToolTip": "src\\DMoreno.CashFlowControl.bff\\Endpoints\\Transactions\\UpdateTransactionEndpoint.cs",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAiwBUAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-30T17:03:03.443Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "TransactionAppServiceTests.cs",
+              "DocumentMoniker": "C:\\Developer\\CashFlowControl\\tests\\DMoreno.CashFlowControl.UnityTests\\AppServices\\TransactionAppServiceTests.cs",
+              "RelativeDocumentMoniker": "tests\\DMoreno.CashFlowControl.UnityTests\\AppServices\\TransactionAppServiceTests.cs",
+              "ToolTip": "C:\\Developer\\CashFlowControl\\tests\\DMoreno.CashFlowControl.UnityTests\\AppServices\\TransactionAppServiceTests.cs",
+              "RelativeToolTip": "tests\\DMoreno.CashFlowControl.UnityTests\\AppServices\\TransactionAppServiceTests.cs",
+              "ViewState": "AQIAAIcBAAAAAAAAAAAAwJQBAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-30T16:26:27.922Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TransactionAppService.cs",
+              "DocumentMoniker": "C:\\Developer\\CashFlowControl\\src\\DMoreno.CashFlowControl.Application\\AppServices\\TransactionAppService.cs",
+              "RelativeDocumentMoniker": "src\\DMoreno.CashFlowControl.Application\\AppServices\\TransactionAppService.cs",
+              "ToolTip": "C:\\Developer\\CashFlowControl\\src\\DMoreno.CashFlowControl.Application\\AppServices\\TransactionAppService.cs",
+              "RelativeToolTip": "src\\DMoreno.CashFlowControl.Application\\AppServices\\TransactionAppService.cs",
+              "ViewState": "AQIAAGAAAAAAAAAAAAAawGQAAABFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-30T16:19:27.547Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UpdateTransactionRequestViewModel.cs",
+              "DocumentMoniker": "C:\\Developer\\CashFlowControl\\src\\DMoreno.CashFlowControl.Application\\ViewModels\\Requests\\UpdateTransactionRequestViewModel.cs",
+              "RelativeDocumentMoniker": "src\\DMoreno.CashFlowControl.Application\\ViewModels\\Requests\\UpdateTransactionRequestViewModel.cs",
+              "ToolTip": "C:\\Developer\\CashFlowControl\\src\\DMoreno.CashFlowControl.Application\\ViewModels\\Requests\\UpdateTransactionRequestViewModel.cs",
+              "RelativeToolTip": "src\\DMoreno.CashFlowControl.Application\\ViewModels\\Requests\\UpdateTransactionRequestViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-30T16:08:37.125Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AddTransactionRequestViewModel.cs",
+              "DocumentMoniker": "C:\\Developer\\CashFlowControl\\src\\DMoreno.CashFlowControl.Application\\ViewModels\\Requests\\AddTransactionRequestViewModel.cs",
+              "RelativeDocumentMoniker": "src\\DMoreno.CashFlowControl.Application\\ViewModels\\Requests\\AddTransactionRequestViewModel.cs",
+              "ToolTip": "C:\\Developer\\CashFlowControl\\src\\DMoreno.CashFlowControl.Application\\ViewModels\\Requests\\AddTransactionRequestViewModel.cs",
+              "RelativeToolTip": "src\\DMoreno.CashFlowControl.Application\\ViewModels\\Requests\\AddTransactionRequestViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-30T16:08:27.18Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UpdateTransactionRequestViewModelBuilder.cs",
+              "DocumentMoniker": "C:\\Developer\\CashFlowControl\\tests\\DMoreno.CashFlowControl.UnityTests\\Shared\\Builders\\UpdateTransactionRequestViewModelBuilder.cs",
+              "RelativeDocumentMoniker": "tests\\DMoreno.CashFlowControl.UnityTests\\Shared\\Builders\\UpdateTransactionRequestViewModelBuilder.cs",
+              "ToolTip": "C:\\Developer\\CashFlowControl\\tests\\DMoreno.CashFlowControl.UnityTests\\Shared\\Builders\\UpdateTransactionRequestViewModelBuilder.cs",
+              "RelativeToolTip": "tests\\DMoreno.CashFlowControl.UnityTests\\Shared\\Builders\\UpdateTransactionRequestViewModelBuilder.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-30T16:09:36.466Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
